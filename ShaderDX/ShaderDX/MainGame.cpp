@@ -24,9 +24,18 @@ bool MainGame::process(float time)
 // Paints the scene on each loop.
 void MainGame::paint(IDirect3DDevice9* device)
 {
+	// Clears the Scene.
 	HR(device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(154, 206, 235), 1.0f, 0));
+	// Begins drawing the scene.
 	HR(device->BeginScene());
+	// Draw all the objects on the scene.
+	for (auto object : objects)
+	{
+		object->paint(device);
+	}
+	// Ends drawing the scene.
 	HR(device->EndScene());
+	// Presents scene / switches buffer.
 	HR(device->Present(NULL, NULL, NULL, NULL));
 }
 

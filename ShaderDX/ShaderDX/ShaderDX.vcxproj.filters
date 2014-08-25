@@ -39,6 +39,12 @@
     <ClInclude Include="MainGame.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp">
@@ -49,6 +55,12 @@
     </ClCompile>
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="MainGame.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>

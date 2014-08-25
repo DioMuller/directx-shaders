@@ -1,9 +1,11 @@
 #pragma once
 #include "mage/AbstractGameLoop.h"
 #include "mage/Effect.h"
+#include "Object.h"
 
 #include <d3dx9.h>
 #include <vector>
+#include <memory>
 
 class MainGame : public mage::AbstractGameLoop
 {
@@ -12,6 +14,7 @@ class MainGame : public mage::AbstractGameLoop
 	//////////////////////////////////////////
 	private:
 		mage::Effect* shader;
+		std::vector<std::shared_ptr<Object>> objects;
 
 	//////////////////////////////////////////
 	// AbstractGameLoop Methods

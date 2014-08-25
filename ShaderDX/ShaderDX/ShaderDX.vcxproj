@@ -87,11 +87,15 @@
     <ClInclude Include="mage\TString.h" />
     <ClInclude Include="mage\WindowsEvent.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp" />
     <ClCompile Include="mage\GameWindow.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
