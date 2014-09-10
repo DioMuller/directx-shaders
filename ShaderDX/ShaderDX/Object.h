@@ -3,6 +3,9 @@
 #include <memory>
 #include "Mage/Effect.h"
 
+
+
+// Position struct.
 typedef struct sPosition
 {
 	D3DXVECTOR3 position;
@@ -22,7 +25,7 @@ class Object
 	//////////////////////////////////////////
 	// Private Attributes
 	//////////////////////////////////////////
-	private:
+	protected:
 		std::string shaderTech;
 
 	//////////////////////////////////////////
@@ -40,9 +43,11 @@ class Object
 		virtual void setup(IDirect3DDevice9* device);
 		// Process whatever should be executed every turn.
 		virtual bool process(float time);
-		// Paints the scene on each loop.
-		virtual void paint(IDirect3DDevice9* device, mage::Effect* shader);
 		// Transforms object and paints it.
 		void transformAndPaint(IDirect3DDevice9* device, mage::Effect* shader);
+
+	protected:
+		// Paints the scene on each loop.
+		virtual void paint(IDirect3DDevice9* device, mage::Effect* shader);
 };
 

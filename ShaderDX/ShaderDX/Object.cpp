@@ -2,18 +2,20 @@
 #include <d3dx9math.h>
 
 
+
 //////////////////////////////////////////
 // Constructor / Destructor
 //////////////////////////////////////////
-
 Object::Object(std::string shaderTech)
 {
 	this->shaderTech = shaderTech;
+	
 }
 
 
 Object::~Object()
 {
+	
 }
 
 //////////////////////////////////////////
@@ -29,12 +31,6 @@ void Object::setup(IDirect3DDevice9* device)
 bool Object::process(float time)
 {
 	return true;
-}
-
-// Paints the scene on each loop.
-void Object::paint(IDirect3DDevice9* device, mage::Effect* shader)
-{
-
 }
 
 // Transforms object and paints it.
@@ -63,5 +59,12 @@ void Object::transformAndPaint(IDirect3DDevice9* device, mage::Effect* shader)
 
 	shader->setMatrix("gWorld", scale * point_translation * rotation * translation);
 
+	// Paint Object
 	paint(device, shader);
+}
+
+// Paints the transformed object on the screen.
+void Object::paint(IDirect3DDevice9* device, mage::Effect* shader)
+{
+
 }

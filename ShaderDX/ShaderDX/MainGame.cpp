@@ -34,6 +34,7 @@ void MainGame::paint(IDirect3DDevice9* device)
 	{
 		object->transformAndPaint(device, shader);
 	}
+
 	// Ends drawing the scene.
 	HR(device->EndScene());
 	// Presents scene / switches buffer.

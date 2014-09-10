@@ -87,6 +87,8 @@
     <ClInclude Include="mage\TString.h" />
     <ClInclude Include="mage\WindowsEvent.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="MeshObject.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
@@ -94,6 +96,8 @@
     <ClCompile Include="mage\Effect.cpp" />
     <ClCompile Include="mage\GameWindow.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MeshObject.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />

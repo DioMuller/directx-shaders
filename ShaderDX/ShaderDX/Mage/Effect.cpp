@@ -101,5 +101,6 @@ Effect& Effect::commit()
 
 Effect::~Effect()
 {
-	shader->Release();
+	if ( shader )
+		shader->Release();
 }

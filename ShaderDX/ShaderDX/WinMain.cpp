@@ -16,7 +16,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
 	if (window.setup(hInstance, nShowCmd, _T(WINDOW_TITLE), WINDOW_POS_X, WINDOW_POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT))
 	{
 		// If initialization was correct, run the game loop.
-		//window.run(new Game());
+		window.run(new MainGame());
 	}
 
 	// Finalizes the system.
