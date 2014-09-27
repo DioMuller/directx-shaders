@@ -1,4 +1,5 @@
 #pragma once
+#include "mage/TString.h"
 #include "Object.h"
 #include "Material.h"
 
@@ -24,5 +25,7 @@ class MeshObject : public Object
 	protected:
 		// Paints the scene on each loop.
 		virtual void paint(IDirect3DDevice9* device, mage::Effect* shader);
+
+		void loadXFile(IDirect3DDevice9* device, const mage::TString& filename);
 };
 

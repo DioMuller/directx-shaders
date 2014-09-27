@@ -107,6 +107,20 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </FxCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Content\Textures\Armor.dds" />
+    <Image Include="Content\Textures\Body.dds" />
+    <Image Include="Content\Textures\DwarfHead.dds" />
+    <Image Include="Content\Textures\Headgear.dds" />
+    <Image Include="Content\Textures\Helmet.dds" />
+    <Image Include="Content\Textures\Pack.dds" />
+    <Image Include="Content\Textures\Weapons.dds" />
+    <Image Include="Content\Textures\whitetex.dds" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Models\Dwarf.x" />
+    <None Include="Content\Models\skullocc.x" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -13,6 +13,12 @@
     <Filter Include="Content\Shaders">
       <UniqueIdentifier>{f7d7677a-469b-4df2-9485-8147496a834a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Content\Models">
+      <UniqueIdentifier>{6845fa16-9309-4853-924d-2039a265ec05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Textures">
+      <UniqueIdentifier>{1d4c2969-bb94-4c77-a251-a96e275277aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mage\AbstractGameLoop.h">
@@ -76,5 +82,39 @@
     <FxCompile Include="Content\Shaders\MainShader.fx">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Content\Textures\Headgear.dds">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Helmet.dds">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Pack.dds">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Weapons.dds">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\whitetex.dds">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Armor.dds">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Body.dds">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\DwarfHead.dds">
+      <Filter>Content\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Models\Dwarf.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\skullocc.x">
+      <Filter>Content\Models</Filter>
+    </None>
   </ItemGroup>
 </Project>
