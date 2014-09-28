@@ -10,13 +10,15 @@ class MeshObject : public Object
 	//////////////////////////////////////////
 	protected:
 		std::vector<Material> materials;
+		mage::TString file;
 		ID3DXMesh* mesh;
+		bool isLoaded;
 
 	//////////////////////////////////////////
 	// Constructor / Destructor
 	//////////////////////////////////////////
 	public:
-		MeshObject(std::string file, std::string shaderTech);
+		MeshObject(mage::TString file, std::string shaderTech);
 		~MeshObject();
 
 	//////////////////////////////////////////
@@ -25,7 +27,6 @@ class MeshObject : public Object
 	protected:
 		// Paints the scene on each loop.
 		virtual void paint(IDirect3DDevice9* device, mage::Effect* shader);
-
-		void loadXFile(IDirect3DDevice9* device, const mage::TString& filename);
+		void loadXFile(IDirect3DDevice9* device);
 };
 

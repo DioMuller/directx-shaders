@@ -1,9 +1,11 @@
 #include "MeshObject.h"
 #include "Vertex.h"
 
-MeshObject::MeshObject(std::string file, std::string shaderTech) : Object(shaderTech)
+MeshObject::MeshObject(mage::TString file, std::string shaderTech) : Object(shaderTech)
 {
+	this->file = file;
 	this->mesh = nullptr;
+	this->isLoaded = false;
 }
 
 
@@ -15,6 +17,12 @@ MeshObject::~MeshObject()
 // Paints the transformed object on the screen.
 void MeshObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 {
+	if (!isLoaded)
+	{
+		loadXFile(device);
+		isLoaded = true;
+	}
+
 	if (!mesh) return;
 
 	for (unsigned int i = 0; i < materials.size(); ++i)
@@ -27,7 +35,7 @@ void MeshObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 
 		// If it has texture, use it. Else, use the default texture.
 		shader->setTexture("gTexture", materials[i].texture != nullptr ?
-			materials[i].texture : Material::GetEmptyTexture());
+			materials[i].texture : Material::GetEmptyTexture(device));
 
 		shader->commit();
 
@@ -38,7 +46,7 @@ void MeshObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 	}
 }
 
-void MeshObject::loadXFile(IDirect3DDevice9* device, const mage::TString& filename)
+void MeshObject::loadXFile(IDirect3DDevice9* device)
 {
 	// Step 1: Load the .x file on the system memory.
 	ID3DXMesh* meshSys = nullptr;
@@ -46,7 +54,7 @@ void MeshObject::loadXFile(IDirect3DDevice9* device, const mage::TString& filena
 	ID3DXBuffer* materialBuffer = nullptr;
 	DWORD numMaterials;
 
-	HR(D3DXLoadMeshFromX(filename.c_str(), D3DXMESH_SYSTEMMEM, device, &adjacencyBuffer, &materialBuffer, 0, &numMaterials, &meshSys));
+	HR(D3DXLoadMeshFromX(file.c_str(), D3DXMESH_SYSTEMMEM, device, &adjacencyBuffer, &materialBuffer, 0, &numMaterials, &meshSys));
 
 	// Step 2: Find out if the mesh has light normals.
 	D3DVERTEXELEMENT9 elems[MAX_FVF_DECL_SIZE];
@@ -106,13 +114,13 @@ void MeshObject::loadXFile(IDirect3DDevice9* device, const mage::TString& filena
 			if (d3dxmaterials[i].pTextureFilename != nullptr)
 			{
 				IDirect3DTexture9* tex = nullptr;
-				char* texFN = d3dxmaterials[i].pTextureFilename;
-				HR(D3DXCreateTextureFromFileA(device, texFN, &tex));
+				std::string texFN = "Content\\Textures\\" + std::string(d3dxmaterials[i].pTextureFilename);
+				HR(D3DXCreateTextureFromFileA(device, texFN.c_str(), &tex));
 				material->texture = tex;
 			}
 			else
 			{
-				material->texture = Material::GetEmptyTexture();
+				material->texture = Material::GetEmptyTexture(device);
 			}
 		}
 	}

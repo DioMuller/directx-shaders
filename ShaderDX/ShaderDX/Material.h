@@ -16,5 +16,5 @@ class Material
 		~Material();
 
 	public:
-		static IDirect3DTexture9* GetEmptyTexture();
+		static IDirect3DTexture9* GetEmptyTexture(IDirect3DDevice9* device);
 };

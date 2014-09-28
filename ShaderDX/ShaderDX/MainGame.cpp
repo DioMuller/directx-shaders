@@ -1,4 +1,5 @@
 #include "MainGame.h"
+#include "MeshObject.h"
 
 // Setups the scene.
 void MainGame::setup(IDirect3DDevice9* device)
@@ -13,6 +14,9 @@ void MainGame::setup(IDirect3DDevice9* device)
 		MessageBoxA(0, error.c_str(), 0, 0);
 		exit(1);
 	}
+
+	// Load Objects
+	objects.push_back(std::shared_ptr<MeshObject>(new MeshObject(L"Content\\Models\\skullocc.x", "PhongTech")));
 }
 
 // Process whatever should be executed every turn.

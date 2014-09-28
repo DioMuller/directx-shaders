@@ -19,6 +19,9 @@
     <Filter Include="Content\Textures">
       <UniqueIdentifier>{1d4c2969-bb94-4c77-a251-a96e275277aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{d9a3c416-3d15-4d69-a561-b717ce1600e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mage\AbstractGameLoop.h">
@@ -42,17 +45,19 @@
     <ClInclude Include="mage\WindowsEvent.h">
       <Filter>Mage</Filter>
     </ClInclude>
-    <ClInclude Include="MainGame.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h" />
     <ClInclude Include="MeshObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
@@ -64,17 +69,19 @@
       <Filter>Mage</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp" />
-    <ClCompile Include="MainGame.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp" />
     <ClCompile Include="MeshObject.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
