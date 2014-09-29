@@ -60,6 +60,7 @@
     <ClInclude Include="Material.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp">
@@ -84,6 +85,7 @@
     <ClCompile Include="Material.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Content\Shaders\MainShader.fx">
