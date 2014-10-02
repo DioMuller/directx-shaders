@@ -11,7 +11,10 @@ MeshObject::MeshObject(mage::TString file, std::string shaderTech) : Object(shad
 
 MeshObject::~MeshObject()
 {
-	if (mesh) delete mesh;
+	if (mesh)
+	{
+		mesh->Release();
+	}
 }
 
 // Paints the transformed object on the screen.
@@ -28,14 +31,14 @@ void MeshObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 	for (unsigned int i = 0; i < materials.size(); ++i)
 	{
 		// Sets Material Properties.
-		shader->setColor("gAmbientMaterial", materials[i].material.Ambient);
-		shader->setColor("gADiffuseMaterial", materials[i].material.Diffuse);
-		shader->setColor("gSpecularMaterial", materials[i].material.Specular);
-		shader->setFloat("gSpecularPower", materials[i].material.Power);
+		shader->setColor("gAmbientMaterial", materials[i]->material.Ambient);
+		shader->setColor("gADiffuseMaterial", materials[i]->material.Diffuse);
+		shader->setColor("gSpecularMaterial", materials[i]->material.Specular);
+		shader->setFloat("gSpecularPower", materials[i]->material.Power);
 
 		// If it has texture, use it. Else, use the default texture.
-		shader->setTexture("gTexture", materials[i].texture != nullptr ?
-			materials[i].texture : Material::GetEmptyTexture(device));
+		auto tex = materials[i]->texture ? materials[i]->texture : Material::GetEmptyTexture(device);
+		shader->setTexture("gTexture", tex);
 
 		shader->commit();
 
@@ -44,6 +47,13 @@ void MeshObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 			HR(mesh->DrawSubset(i));
 		});
 	}
+}
+
+bool MeshObject::process(float time)
+{
+	position.rotation.y -= (60.0f * time);
+
+	return Object::process(time);
 }
 
 void MeshObject::loadXFile(IDirect3DDevice9* device)
@@ -107,7 +117,7 @@ void MeshObject::loadXFile(IDirect3DDevice9* device)
 		{
 			// Save the 'i'th material and defines the ambient component to be the same as diffuse.
 			d3dxmaterials[i].MatD3D.Ambient = d3dxmaterials[i].MatD3D.Diffuse;
-			auto material = new Material();
+			auto material = std::shared_ptr<Material>(new Material());
 			material->material = d3dxmaterials[i].MatD3D;
 
 			// Checks if there is an texture.
@@ -120,8 +130,10 @@ void MeshObject::loadXFile(IDirect3DDevice9* device)
 			}
 			else
 			{
-				material->texture = Material::GetEmptyTexture(device);
+				material->texture = nullptr; //Material::GetEmptyTexture(device);
 			}
+
+			materials.push_back(material);
 		}
 	}
 

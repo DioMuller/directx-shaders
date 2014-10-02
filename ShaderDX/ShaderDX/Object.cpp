@@ -10,6 +10,10 @@ Object::Object(std::string shaderTech)
 {
 	this->shaderTech = shaderTech;
 	
+	position.position = { 0.0f, 0.0f, 0.0f };
+	position.scale = { 1.0f, 1.0f, 1.0f };
+	position.rotation = { 0.0f, 0.0f, 0.0f };
+	position.point_translation = { 0.0f, 0.0f, 0.0f };
 }
 
 
@@ -48,10 +52,15 @@ void Object::transformAndPaint(IDirect3DDevice9* device, mage::Effect* shader)
 		position.point_translation.y, position.point_translation.z);
 
 	// Rotation
-	D3DXMATRIX rotation;
-	D3DXMatrixRotationX(&rotation, D3DXToRadian(position.rotation.x));
-	D3DXMatrixRotationY(&rotation, D3DXToRadian(position.rotation.y));
-	D3DXMatrixRotationZ(&rotation, D3DXToRadian(position.rotation.z));
+	D3DXMATRIX rotationX;
+	D3DXMATRIX rotationY;
+	D3DXMATRIX rotationZ;
+
+	D3DXMatrixRotationX(&rotationX, D3DXToRadian(position.rotation.x));
+	D3DXMatrixRotationY(&rotationY, D3DXToRadian(position.rotation.y));
+	D3DXMatrixRotationZ(&rotationZ, D3DXToRadian(position.rotation.z));
+
+	D3DXMATRIX rotation = rotationX * rotationY * rotationZ;
 
 	// Translation
 	D3DXMATRIX translation;

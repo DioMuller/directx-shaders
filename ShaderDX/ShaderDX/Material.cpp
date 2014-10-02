@@ -7,6 +7,8 @@
 //////////////////////////////////////////
 IDirect3DTexture9* Material::emptyTexture = nullptr;
 
+#include <direct.h>
+
 //////////////////////////////////////////
 // Constructor / Destructor
 //////////////////////////////////////////
@@ -17,7 +19,11 @@ Material::Material()
 
 Material::~Material()
 {
-	if (texture) delete texture;
+	if (texture)
+	{
+		texture->Release();
+		delete texture;
+	}
 }
 
 //////////////////////////////////////////
@@ -28,8 +34,7 @@ IDirect3DTexture9* Material::GetEmptyTexture(IDirect3DDevice9* device)
 {
 	if (!emptyTexture)
 	{
-		HR(D3DXCreateTextureFromFile(device, _T("Content\\Textures\\whitetex.dds"), &emptyTexture));
-		// TODO: Load Empty Texture.
+		HR(D3DXCreateTextureFromFile(device, L"Content\\Textures\\whitetex.dds", &emptyTexture));
 	}
 
 	return emptyTexture;

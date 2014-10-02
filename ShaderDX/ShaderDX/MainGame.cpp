@@ -6,6 +6,13 @@ void MainGame::setup(IDirect3DDevice9* device)
 {
 	running = true;
 
+	// Initialize Camera
+	D3DXVECTOR3 cameraPosition = { 10.0f, 2.5f, 2.0f };
+	camera = std::shared_ptr<Camera>(new Camera(cameraPosition, { 0.0, cameraPosition.y, 0.0f }, { 0.0f, 1.0f, 0.0f }, 60.0f, 1.0f, 5000.0f));
+
+	// Initialize lights
+	light = std::shared_ptr<Light>(new Light({ -1.0f, -1.0f, 1.0f }, { 0.05f, 0.05f, 0.05f }, { 1.0f, 1.0f, 0.8f }, { 1.0f, 1.0f, 1.0f }));
+
 	// Load Shader
 	shader = new mage::Effect(_T("Content/Shaders/MainShader.fx"));
 	std::string error = shader->compile(device);
@@ -22,6 +29,17 @@ void MainGame::setup(IDirect3DDevice9* device)
 // Process whatever should be executed every turn.
 bool MainGame::process(float time)
 {
+	// Process Camera
+	camera->process(time);
+	light->process(time);
+
+	// Process Objects
+	// Draw all the objects on the scene.
+	for (auto object : objects)
+	{
+		object->process(time);
+	}
+
 	return AbstractGameLoop::process(time);
 }
 
@@ -32,6 +50,10 @@ void MainGame::paint(IDirect3DDevice9* device)
 	HR(device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(154, 206, 235), 1.0f, 0));
 	// Begins drawing the scene.
 	HR(device->BeginScene());
+
+	// Update camera transform and turn lights on.
+	camera->transform(device, shader);
+	light->paint(device, shader);
 
 	// Draw all the objects on the scene.
 	for (auto object : objects)

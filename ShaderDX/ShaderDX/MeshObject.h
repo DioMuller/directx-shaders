@@ -9,7 +9,7 @@ class MeshObject : public Object
 	// Private Attributes
 	//////////////////////////////////////////
 	protected:
-		std::vector<Material> materials;
+		std::vector<std::shared_ptr<Material>> materials;
 		mage::TString file;
 		ID3DXMesh* mesh;
 		bool isLoaded;
@@ -27,6 +27,9 @@ class MeshObject : public Object
 	protected:
 		// Paints the scene on each loop.
 		virtual void paint(IDirect3DDevice9* device, mage::Effect* shader);
+		// Process whatever should be executed every turn.
+		virtual bool process(float time);
+		// Loads .x file into the Mesh.
 		void loadXFile(IDirect3DDevice9* device);
 };
 

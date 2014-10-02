@@ -6,6 +6,8 @@
 #include <d3dx9.h>
 #include <vector>
 #include <memory>
+#include "Camera.h"
+#include "Light.h"
 
 class MainGame : public mage::AbstractGameLoop
 {
@@ -15,6 +17,8 @@ class MainGame : public mage::AbstractGameLoop
 	private:
 		mage::Effect* shader;
 		std::vector<std::shared_ptr<Object>> objects;
+		std::shared_ptr<Camera> camera;
+		std::shared_ptr<Light> light;
 
 	//////////////////////////////////////////
 	// AbstractGameLoop Methods
