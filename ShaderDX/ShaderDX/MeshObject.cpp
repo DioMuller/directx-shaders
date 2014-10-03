@@ -51,7 +51,7 @@ void MeshObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 
 bool MeshObject::process(float time)
 {
-	position.rotation.y -= (60.0f * time);
+	position.rotation.y -= (120.0f * time);
 
 	return Object::process(time);
 }

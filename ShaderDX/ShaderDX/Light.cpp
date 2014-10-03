@@ -7,6 +7,8 @@ Light::Light(D3DXVECTOR3 direction, D3DXVECTOR3 ambient, D3DXVECTOR3 diffuse, D3
 	this->ambientColor = ambient;
 	this->diffuseColor = diffuse;
 	this->specularColor = specular;
+
+	this->changed = true;
 }
 
 
@@ -23,10 +25,15 @@ bool Light::process(float time)
 // "Paints" the light on the scene.
 void Light::paint(IDirect3DDevice9* device, mage::Effect* shader)
 {
-	D3DXVec3Normalize(&direction, &direction);
-	shader->setVector("gLightDir", direction);
+	if (changed)
+	{
+		D3DXVec3Normalize(&direction, &direction);
+		shader->setVector("gLightDir", direction);
 
-	shader->setVector("gAmbientColor", ambientColor);
-	shader->setVector("gDiffuseColor", diffuseColor);
-	shader->setVector("gSpecularColor", specularColor);
+		shader->setVector("gAmbientColor", ambientColor);
+		shader->setVector("gDiffuseColor", diffuseColor);
+		shader->setVector("gSpecularColor", specularColor);
+
+		changed = false;
+	}
 }

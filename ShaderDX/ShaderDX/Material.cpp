@@ -34,7 +34,7 @@ IDirect3DTexture9* Material::GetEmptyTexture(IDirect3DDevice9* device)
 {
 	if (!emptyTexture)
 	{
-		HR(D3DXCreateTextureFromFile(device, L"Content\\Textures\\whitetex.dds", &emptyTexture));
+		HR(D3DXCreateTextureFromFile(device, L".\\Content\\Textures\\whitetex.dds", &emptyTexture));
 	}
 
 	return emptyTexture;

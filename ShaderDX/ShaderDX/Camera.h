@@ -14,6 +14,7 @@ class Camera
 		float fov;
 		float near_distance;
 		float far_distance;
+		bool changed;
 
 	//////////////////////////////////////////
 	// Constructors

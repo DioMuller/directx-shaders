@@ -12,6 +12,7 @@ class Light
 		D3DXVECTOR3 ambientColor;
 		D3DXVECTOR3 diffuseColor;
 		D3DXVECTOR3 specularColor;
+		bool changed;
 
 	//////////////////////////////////////////
 	// Constructor
