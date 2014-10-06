@@ -22,7 +22,6 @@ Material::~Material()
 	if (texture)
 	{
 		texture->Release();
-		delete texture;
 	}
 }
 
@@ -34,7 +33,8 @@ IDirect3DTexture9* Material::GetEmptyTexture(IDirect3DDevice9* device)
 {
 	if (!emptyTexture)
 	{
-		HR(D3DXCreateTextureFromFile(device, L".\\Content\\Textures\\whitetex.dds", &emptyTexture));
+		std::wstring texPath = getContentItemPathW(CONTENT_TEXTURES, L"whitetex.dds");
+		HR(D3DXCreateTextureFromFile(device, texPath.c_str(), &emptyTexture));
 	}
 
 	return emptyTexture;

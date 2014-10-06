@@ -80,6 +80,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Content.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="mage\AbstractGameLoop.h" />
     <ClInclude Include="mage\Effect.h" />
@@ -96,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Content.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="mage\Effect.cpp" />
     <ClCompile Include="mage\GameWindow.cpp" />

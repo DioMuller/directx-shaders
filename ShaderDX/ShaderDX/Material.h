@@ -1,5 +1,6 @@
 #pragma once
 #include <d3d9.h>
+#include "Content.h"
 
 // Material data class.
 class Material

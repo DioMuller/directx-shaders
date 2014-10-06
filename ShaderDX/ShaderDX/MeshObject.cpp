@@ -124,8 +124,8 @@ void MeshObject::loadXFile(IDirect3DDevice9* device)
 			if (d3dxmaterials[i].pTextureFilename != nullptr)
 			{
 				IDirect3DTexture9* tex = nullptr;
-				std::string texFN = "Content\\Textures\\" + std::string(d3dxmaterials[i].pTextureFilename);
-				HR(D3DXCreateTextureFromFileA(device, texFN.c_str(), &tex));
+				std::wstring texFN = getContentItemPath(CONTENT_TEXTURES, std::string(d3dxmaterials[i].pTextureFilename));
+				HR(D3DXCreateTextureFromFile(device, texFN.c_str(), &tex));
 				material->texture = tex;
 			}
 			else

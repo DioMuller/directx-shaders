@@ -66,6 +66,9 @@
     <ClInclude Include="Light.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Content.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp">
@@ -94,6 +97,9 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Content.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>

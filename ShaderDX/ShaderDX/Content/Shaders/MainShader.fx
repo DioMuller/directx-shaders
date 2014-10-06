@@ -41,6 +41,7 @@ sampler TesS = sampler_state
 	Texture = <gTexture>;
 	MinFilter = Anisotropic;
 	MaxAnisotropy = 8;
+	//MinFilter = LINEAR;
 	MagFilter = LINEAR;
 	MipFilter = LINEAR;
 	AddressU = WRAP;
@@ -80,14 +81,14 @@ float4 TransformPS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEX
 	float diffuseIntensity = max(dot(-lightDir, normal), 0.0f);
 	float3 diffuse = (gDiffuseColor * gDiffuseMaterial * diffuseIntensity).rgb;
 
-		//Cálculo do componente especular
-		float3 reflex = reflect(lightDir, normal);
-		float specularIntensity = pow(saturate(dot(reflex, toCamera)), gSpecularPower);
+	//Cálculo do componente especular
+	float3 reflex = reflect(lightDir, normal);
+	float specularIntensity = pow(saturate(dot(reflex, toCamera)), gSpecularPower);
 	float3 specular = (gSpecularColor * gSpecularMaterial * specularIntensity).rgb;
 
-		//Soma das luzes
-		float3 lighting = (ambient.rgb + diffuse.rgb) * tex2D(TesS, tex0).rgb;
-		return saturate(float4(lighting + specular.rgb, gAmbientMaterial.a));
+	//Soma das luzes
+	float3 lighting = (ambient.rgb + diffuse.rgb) * tex2D(TesS, tex0).rgb;
+	return saturate(float4(lighting + specular.rgb, gAmbientMaterial.a));
 }
 
 technique PhongTech
