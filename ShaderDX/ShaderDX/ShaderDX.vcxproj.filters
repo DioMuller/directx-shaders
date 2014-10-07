@@ -22,6 +22,15 @@
     <Filter Include="Game">
       <UniqueIdentifier>{d9a3c416-3d15-4d69-a561-b717ce1600e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Objects">
+      <UniqueIdentifier>{4ded7edb-34ca-4bf3-8f0f-b4566344258f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Scene">
+      <UniqueIdentifier>{ea50d761-00c5-4ed4-9747-dde810499185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Rendering">
+      <UniqueIdentifier>{74b38d93-39f2-4bcc-ba1f-2a04c308def6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mage\AbstractGameLoop.h">
@@ -45,29 +54,29 @@
     <ClInclude Include="mage\WindowsEvent.h">
       <Filter>Mage</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshObject.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="MainGame.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="MeshObject.h">
+      <Filter>Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Core\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Core</Filter>
+      <Filter>Core\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
-      <Filter>Core</Filter>
+      <Filter>Core\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Content.h">
-      <Filter>Core</Filter>
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Core\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -78,35 +87,30 @@
       <Filter>Mage</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp" />
-    <ClCompile Include="Object.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Vertex.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshObject.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="MainGame.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Core</Filter>
+    <ClCompile Include="MeshObject.cpp">
+      <Filter>Core\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Core\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Content.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Rendering</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="Content\Shaders\MainShader.fx">
-      <Filter>Content\Shaders</Filter>
-    </FxCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Content\Textures\Headgear.dds">
@@ -141,5 +145,10 @@
     <None Include="Content\Models\skullocc.x">
       <Filter>Content\Models</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Content\Shaders\PhongShader.fx">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

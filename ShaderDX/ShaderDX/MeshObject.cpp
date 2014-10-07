@@ -30,6 +30,7 @@ void MeshObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 
 	for (unsigned int i = 0; i < materials.size(); ++i)
 	{
+		auto mat = materials[i]->material;
 		// Sets Material Properties.
 		shader->setColor("gAmbientMaterial", materials[i]->material.Ambient);
 		shader->setColor("gADiffuseMaterial", materials[i]->material.Diffuse);
