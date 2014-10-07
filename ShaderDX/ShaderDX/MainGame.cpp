@@ -27,8 +27,6 @@ void MainGame::setup(IDirect3DDevice9* device)
 	//objects[0]->position.scale = { 0.3f, 0.3f, 0.3f };
 
 	objects.push_back(std::shared_ptr<MeshObject>(new MeshObject(L"Content\\Models\\Dwarf.x", "PhongTech")));
-	//objects[0]->position.scale = { 0.5f, 0.5f, 0.5f };
-	//objects[0]->position.position = { 0.0f, 3.0f, 0.5f };
 }
 
 // Process whatever should be executed every turn.
