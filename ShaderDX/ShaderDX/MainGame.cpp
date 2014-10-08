@@ -26,7 +26,7 @@ void MainGame::setup(IDirect3DDevice9* device)
 	//objects.push_back(std::shared_ptr<MeshObject>(new MeshObject(L"Content\\Models\\skullocc.x", "PhongTech")));
 	//objects[0]->position.scale = { 0.3f, 0.3f, 0.3f };
 
-	objects.push_back(std::shared_ptr<MeshObject>(new MeshObject(L"Content\\Models\\vic viper.x", "PhongTech")));
+	objects.push_back(std::shared_ptr<MeshObject>(new MeshObject(L"Content\\Models\\Dwarf.x", "PhongTech")));
 }
 
 // Process whatever should be executed every turn.
