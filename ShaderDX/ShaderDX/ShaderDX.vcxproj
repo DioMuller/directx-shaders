@@ -116,16 +116,29 @@
   <ItemGroup>
     <Image Include="Content\Textures\Armor.dds" />
     <Image Include="Content\Textures\Body.dds" />
+    <Image Include="Content\Textures\dbody.tga" />
+    <Image Include="Content\Textures\dbodybump.tga" />
+    <Image Include="Content\Textures\dbodytt.tga" />
     <Image Include="Content\Textures\DwarfHead.dds" />
     <Image Include="Content\Textures\Headgear.dds" />
     <Image Include="Content\Textures\Helmet.dds" />
     <Image Include="Content\Textures\Pack.dds" />
+    <Image Include="Content\Textures\Pirate Ship_1024.png" />
+    <Image Include="Content\Textures\ship1UV.bmp" />
+    <Image Include="Content\Textures\texture.jpg" />
     <Image Include="Content\Textures\Weapons.dds" />
     <Image Include="Content\Textures\whitetex.dds" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Models\dino videogame.x" />
+    <None Include="Content\Models\dino videogame2.x" />
     <None Include="Content\Models\Dwarf.x" />
+    <None Include="Content\Models\Pirate Ship.x" />
+    <None Include="Content\Models\samus low.x" />
+    <None Include="Content\Models\ship1.x" />
     <None Include="Content\Models\skullocc.x" />
+    <None Include="Content\Models\vic viper.x" />
+    <None Include="Content\Models\viper test.x" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

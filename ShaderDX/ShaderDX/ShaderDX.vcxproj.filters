@@ -137,12 +137,51 @@
     <Image Include="Content\Textures\DwarfHead.dds">
       <Filter>Content\Textures</Filter>
     </Image>
+    <Image Include="Content\Textures\dbody.tga">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\dbodybump.tga">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\dbodytt.tga">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Pirate Ship_1024.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\ship1UV.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\texture.jpg">
+      <Filter>Content\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Models\Dwarf.x">
       <Filter>Content\Models</Filter>
     </None>
     <None Include="Content\Models\skullocc.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\dino videogame.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\dino videogame2.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\Pirate Ship.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\samus low.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\ship1.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\viper test.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\vic viper.x">
       <Filter>Content\Models</Filter>
     </None>
   </ItemGroup>

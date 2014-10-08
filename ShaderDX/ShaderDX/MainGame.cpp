@@ -7,11 +7,11 @@ void MainGame::setup(IDirect3DDevice9* device)
 	running = true;
 
 	// Initialize Camera
-	D3DXVECTOR3 cameraPosition(1.0f, 0.8f, 2.0f); //{ 10.0f, 2.5f, 2.0f };
+	D3DXVECTOR3 cameraPosition(1.0f, 0.8f, 2.0f); //(10.0f, 2.5f, 2.0f);
 	camera = std::shared_ptr<Camera>(new Camera(cameraPosition, { 0.0, cameraPosition.y, 0.0f }, { 0.0f, 1.0f, 0.0f }, 60.0f, 1.0f, 5000.0f));
 
 	// Initialize lights
-	light = std::shared_ptr<Light>(new Light({ -1.0f, -1.0f, 1.0f }, { 0.8f, 0.8f, 0.8f }, { 1.0f, 1.0f, 1.0f }, { 1.0f, 1.0f, 1.0f }));
+	light = std::shared_ptr<Light>(new Light({ -1.0f, -1.0f, 1.0f }, { 0.5f, 0.5f, 0.5f }, { 1.0f, 1.0f, 1.0f }, { 1.0f, 1.0f, 1.0f }));
 
 	// Load Shader
 	shader = new mage::Effect(_T("Content/Shaders/PhongShader.fx"));
@@ -26,7 +26,7 @@ void MainGame::setup(IDirect3DDevice9* device)
 	//objects.push_back(std::shared_ptr<MeshObject>(new MeshObject(L"Content\\Models\\skullocc.x", "PhongTech")));
 	//objects[0]->position.scale = { 0.3f, 0.3f, 0.3f };
 
-	objects.push_back(std::shared_ptr<MeshObject>(new MeshObject(L"Content\\Models\\Dwarf.x", "PhongTech")));
+	objects.push_back(std::shared_ptr<MeshObject>(new MeshObject(L"Content\\Models\\vic viper.x", "PhongTech")));
 }
 
 // Process whatever should be executed every turn.
