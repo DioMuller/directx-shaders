@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene>
+  <!-- Scene Camera -->
+  <Camera fov="60.0" near="1.0" far="5000.0">
+    <Position x="1.0" y="0.8" z="2.0"/>
+    <Target x="0.0" y="0.8" z="0.0"/>
+    <Up x="0.0" y="1.0" z="0.0"/>
+  </Camera>
+  <!-- Scene Illumination -->
+  <Light>
+    <Direction x="-1.0" y="-1.0" z="1.0"/>
+    <Ambient x="0.5" y="0.5" z="0.5"/>
+    <Diffuse x="1.0" y="1.0" z="1.0"/>
+    <Specular x="1.0" y="1.0" z="1.0"/>
+  </Light>
+  <Objects>
+    <!-- Dinossaur -->
+    <MeshObject id="Dino" Model="dino videogame.x">
+      <Transforms>
+        <Transform Type="Scale" x="1.5" y="1.5" z="1.5"/>
+      </Transforms>
+    </MeshObject>
+  </Objects>
+</scene>
