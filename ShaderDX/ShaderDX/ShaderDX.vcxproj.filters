@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Mage">
-      <UniqueIdentifier>{c90fb2de-77e0-4c81-8ca1-aff31bd1a1bf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{17248087-91b8-4a69-ac3a-89fbbd3f293f}</UniqueIdentifier>
     </Filter>
@@ -31,28 +28,40 @@
     <Filter Include="Core\Rendering">
       <UniqueIdentifier>{74b38d93-39f2-4bcc-ba1f-2a04c308def6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Libs">
+      <UniqueIdentifier>{2b1bc205-3538-4ac0-89cc-65c726c742e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\TinyXML2">
+      <UniqueIdentifier>{ca656eaa-a9ff-45c1-9814-6bfeb95b7c12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\Mage">
+      <UniqueIdentifier>{c90fb2de-77e0-4c81-8ca1-aff31bd1a1bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scenes">
+      <UniqueIdentifier>{9c7624b2-4284-4172-bdf3-25f52199aa7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mage\AbstractGameLoop.h">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClInclude>
     <ClInclude Include="mage\Effect.h">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClInclude>
     <ClInclude Include="mage\GameWindow.h">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClInclude>
     <ClInclude Include="mage\HandleError.h">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClInclude>
     <ClInclude Include="mage\IGameLoop.h">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClInclude>
     <ClInclude Include="mage\TString.h">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClInclude>
     <ClInclude Include="mage\WindowsEvent.h">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClInclude>
     <ClInclude Include="MainGame.h">
       <Filter>Game</Filter>
@@ -78,13 +87,19 @@
     <ClInclude Include="Vertex.h">
       <Filter>Core\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="TinyXML2\tinyxml2.h">
+      <Filter>Libs\TinyXML2</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Core\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClCompile>
     <ClCompile Include="mage\GameWindow.cpp">
-      <Filter>Mage</Filter>
+      <Filter>Libs\Mage</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="MainGame.cpp">
@@ -110,6 +125,12 @@
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML2\tinyxml2.cpp">
+      <Filter>Libs\TinyXML2</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Core\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -189,5 +210,10 @@
     <FxCompile Include="Content\Shaders\PhongShader.fx">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Content\Scenes\Test.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
