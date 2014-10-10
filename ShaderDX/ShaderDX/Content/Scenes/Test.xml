@@ -19,8 +19,12 @@
     <!-- Dinossaur -->
     <MeshObject Id="Dino" Model="dino videogame.x" Tech="PhongTech">
       <Transforms>
+        <Transform Type="Position" X="1.0" Y ="0" Z="0"/>
         <Transform Type="Scale" X="1.5" Y="1.5" Z="1.5"/>
       </Transforms>
+    </MeshObject>
+    <!-- Dinossaur -->
+    <MeshObject Id="Dino" Model="Dwarf.x" Tech="PhongTech">
     </MeshObject>
   </Objects>
 </Scene>
