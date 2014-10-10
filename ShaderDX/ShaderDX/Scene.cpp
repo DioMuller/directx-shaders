@@ -1,4 +1,9 @@
 #include "Scene.h"
+#include "Content.h"
+#include "TinyXML2/tinyxml2.h"
+
+#include "MeshObject.h"
+
 
 //////////////////////////////////////////
 // Constructors
@@ -10,6 +15,10 @@ Scene::Scene()
 
 Scene::~Scene()
 {
+	if (shader)
+	{
+		delete shader;
+	}
 }
 
 //////////////////////////////////////////
@@ -66,11 +75,220 @@ void Scene::paint(IDirect3DDevice9* device)
 // Executed on end.
 void Scene::finish(IDirect3DDevice9* device)
 {
-
+	if (shader)
+	{
+		delete shader;
+	}
 }
 
 // Loads scene from an XML file.
 void Scene::loadFromFile(std::string path)
 {
+	tinyxml2::XMLDocument doc;
+	doc.LoadFile(path.c_str());
 
+	/////////////////////
+	// Get Root Element
+	/////////////////////
+	auto root = doc.FirstChildElement("Scene");
+
+	if (root)
+	{
+		/////////////////////
+		// Load Shader
+		/////////////////////
+		auto shaderElement = root->FirstChildElement("Shader");
+
+		if (shaderElement)
+		{
+			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+			std::wstring shaderPath = converter.from_bytes(shaderElement->Attribute("File"));
+
+			shader = new mage::Effect(shaderPath);
+		}
+
+		/////////////////////
+		// Load Camera
+		/////////////////////
+		auto cameraElement = root->FirstChildElement("Camera");
+
+		if (cameraElement)
+		{
+			// Camera Parameters
+			float fov = std::atof(cameraElement->Attribute("Fov"));
+			float neardist = std::atof(cameraElement->Attribute("Near"));
+			float fardist = std::atof(cameraElement->Attribute("Far"));
+
+			// Camera Position
+			auto cameraPosition = cameraElement->FirstChildElement("Position");
+			D3DXVECTOR3 positionVec = D3DXVECTOR3(0, 0, 0);
+
+			if (cameraPosition)
+			{
+				positionVec.x = std::stof(cameraPosition->Attribute("X"));
+				positionVec.y = std::stof(cameraPosition->Attribute("Y"));
+				positionVec.z = std::stof(cameraPosition->Attribute("Z"));
+			}
+
+			// Camera Target
+			auto cameraTarget = cameraElement->FirstChildElement("Target");
+			D3DXVECTOR3 targetVec = D3DXVECTOR3(0, 0, 0);
+
+			if (cameraTarget)
+			{
+				targetVec.x = std::stof(cameraTarget->Attribute("X"));
+				targetVec.y = std::stof(cameraTarget->Attribute("Y"));
+				targetVec.z = std::stof(cameraTarget->Attribute("Z"));
+			}
+
+
+			// Camera Up
+			auto cameraUp = cameraElement->FirstChildElement("Up");
+			D3DXVECTOR3 upVec = D3DXVECTOR3(0, 0, 0);
+
+			if (cameraUp)
+			{
+				upVec.x = std::stof(cameraUp->Attribute("X"));
+				upVec.y = std::stof(cameraUp->Attribute("Y"));
+				upVec.z = std::stof(cameraUp->Attribute("Z"));
+			}
+
+			camera = std::shared_ptr<Camera>(new Camera(positionVec, targetVec, upVec, fov, neardist, fardist));
+		}
+
+		/////////////////////
+		// Load Lights
+		/////////////////////
+		auto lightElement = root->FirstChildElement("Light");
+
+		if (lightElement)
+		{
+			// Light Direction
+			auto lightDirection = lightElement->FirstChildElement("Direction");
+			D3DXVECTOR3 directionVec = D3DXVECTOR3(0,0,0);
+
+			if (lightDirection)
+			{
+				directionVec.x = std::stof(lightDirection->Attribute("X"));
+				directionVec.y = std::stof(lightDirection->Attribute("Y"));
+				directionVec.z = std::stof(lightDirection->Attribute("Z"));
+			}
+
+			// Light Ambient
+			auto lightAmbient = lightElement->FirstChildElement("Ambient");
+			D3DXVECTOR3 ambientVec = D3DXVECTOR3(0, 0, 0);
+
+			if (lightAmbient)
+			{
+				ambientVec.x = std::stof(lightAmbient->Attribute("X"));
+				ambientVec.y = std::stof(lightAmbient->Attribute("Y"));
+				ambientVec.z = std::stof(lightAmbient->Attribute("Z"));
+			}
+
+			// Light Diffuse
+			auto lightDiffuse = lightElement->FirstChildElement("Diffuse");
+			D3DXVECTOR3 diffuseVec = D3DXVECTOR3(0, 0, 0);
+
+			if (lightDiffuse)
+			{
+				diffuseVec.x = std::stof(lightDiffuse->Attribute("X"));
+				diffuseVec.y = std::stof(lightDiffuse->Attribute("Y"));
+				diffuseVec.z = std::stof(lightDiffuse->Attribute("Z"));
+			}
+
+			// Light Specular
+			auto lightSpecular = lightElement->FirstChildElement("Specular");
+			D3DXVECTOR3 specularVec = D3DXVECTOR3(0, 0, 0);
+
+			if (lightSpecular)
+			{
+				specularVec.x = std::stof(lightSpecular->Attribute("X"));
+				specularVec.y = std::stof(lightSpecular->Attribute("Y"));
+				specularVec.z = std::stof(lightSpecular->Attribute("Z"));
+			}
+
+			// Initialize Lights
+			light = std::shared_ptr<Light>(new Light(directionVec, ambientVec, diffuseVec, specularVec));
+		}
+
+		/////////////////////
+		// Load Objects
+		/////////////////////
+		auto objectsElement = root->FirstChildElement("Objects");
+		if (objectsElement)
+		{
+			auto nextObject = objectsElement->FirstChildElement();
+
+			while (nextObject != nullptr)
+			{
+				std::string name = nextObject->Name();
+				Object* object = nullptr;
+
+				// Load Model
+				if (name == "MeshObject")
+				{
+					std::string id = nextObject->Attribute("Id");
+					std::wstring model = getContentItemPath(CONTENT_MODELS, nextObject->Attribute("Model"));
+					std::string tech = nextObject->Attribute("Tech");
+
+					object = new MeshObject(model, tech);
+				}
+
+				// In-Object transformations, if the object was loaded.
+				if (object)
+				{
+					// Load Transforms
+					auto transforms = root->FirstChildElement("Transforms");
+
+					if (transforms)
+					{
+						auto transform = transforms->FirstChildElement("Transform");
+
+						while (transform)
+						{
+							// Get Transform Type
+							std::string type = transform->Attribute("Type");
+							
+							// Get Transform Value
+							float x = std::atof(transform->Attribute("X"));
+							float y = std::atof(transform->Attribute("Y"));
+							float z = std::atof(transform->Attribute("Z"));
+
+							// Executes transform
+							if (type == "Scale")
+							{
+								object->position.scale = D3DXVECTOR3(x, y, z);
+							}
+							else if (type == "Position")
+							{
+								object->position.position = D3DXVECTOR3(x, y, z);
+							}
+							else if (type == "PointTranslation")
+							{
+								object->position.point_translation = D3DXVECTOR3(x, y, z);
+							}
+							else if (type == "Rotation")
+							{
+								object->position.rotation = D3DXVECTOR3(x, y, z);
+							}
+
+							// Get next element
+							transform = transform->NextSiblingElement("Transform");
+						}
+
+					}
+
+					// Add Object to scene
+					objects.push_back(std::shared_ptr<Object>(object));
+				}
+
+				// Get next object
+				nextObject = nextObject->NextSiblingElement();
+			}
+		}
+	}
+	else
+	{
+		// TODO: Log "No Root tag "Scene" found.
+	}
 }

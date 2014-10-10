@@ -8,6 +8,7 @@
 
 #define PATH_MAX_LENGHT 256
 
+#define CONTENT_SCENES L"Scenes"
 #define CONTENT_MODELS L"Models"
 #define CONTENT_SHADERS L"Shaders"
 #define CONTENT_TEXTURES L"Textures"
