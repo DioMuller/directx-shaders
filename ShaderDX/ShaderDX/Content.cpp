@@ -25,8 +25,20 @@ std::wstring getContentItemPathW(std::wstring type, std::wstring file)
 
 std::wstring getContentItemPath(std::wstring type, std::string file)
 {
-	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-	std::wstring filew = converter.from_bytes(file);
+	std::wstring filew = toWString(file);
 
 	return getContentItemPathW(type, filew);
+}
+
+// String functions
+std::string fromWString(std::wstring value)
+{
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	return converter.to_bytes(value);
+}
+
+std::wstring toWString(std::string value)
+{
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	return converter.from_bytes(value);
 }

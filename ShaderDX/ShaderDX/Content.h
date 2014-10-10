@@ -19,4 +19,7 @@ std::wstring getContentPath(std::wstring type = L"");
 std::wstring getContentItemPathW(std::wstring type, std::wstring file);
 std::wstring getContentItemPath(std::wstring type, std::string file);
 
+std::string fromWString(std::wstring value);
+std::wstring toWString(std::string value);
+
 #endif //__CONTENT_H__

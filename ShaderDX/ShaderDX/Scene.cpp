@@ -28,7 +28,14 @@ Scene::~Scene()
 // Setups the scene.
 void Scene::initialize(IDirect3DDevice9* device)
 {
-
+	if (shader)
+	{
+		std::string error = shader->compile(device);
+		if (!error.empty()) {
+			MessageBoxA(0, error.c_str(), 0, 0);
+			exit(1);
+		}
+	}
 }
 
 // Process whatever should be executed every turn.
@@ -78,6 +85,7 @@ void Scene::finish(IDirect3DDevice9* device)
 	if (shader)
 	{
 		delete shader;
+		shader = nullptr;
 	}
 }
 
@@ -101,10 +109,9 @@ void Scene::loadFromFile(std::string path)
 
 		if (shaderElement)
 		{
-			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-			std::wstring shaderPath = converter.from_bytes(shaderElement->Attribute("File"));
+			std::string shaderPath = shaderElement->Attribute("File");
 
-			shader = new mage::Effect(shaderPath);
+			shader = new mage::Effect(getContentItemPath(CONTENT_SHADERS, shaderPath));
 		}
 
 		/////////////////////
