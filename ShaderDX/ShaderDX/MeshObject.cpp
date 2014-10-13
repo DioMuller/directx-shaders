@@ -1,6 +1,8 @@
 #include "MeshObject.h"
 #include "Vertex.h"
 
+using namespace dx9lib;
+
 MeshObject::MeshObject(mage::TString file, std::string shaderTech) : Object(shaderTech)
 {
 	this->file = file;

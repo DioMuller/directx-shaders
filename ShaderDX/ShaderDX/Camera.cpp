@@ -1,6 +1,8 @@
 #include "Camera.h"
 #include "mage/GameWindow.h"
 
+using namespace dx9lib;
+
 Camera::Camera(D3DXVECTOR3 position, D3DXVECTOR3 target, D3DXVECTOR3 up, float fov, float near_distance, float far_distance)
 {
 	changed = true;

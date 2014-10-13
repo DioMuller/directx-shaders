@@ -4,6 +4,7 @@
 
 #include "MeshObject.h"
 
+using namespace dx9lib;
 
 //////////////////////////////////////////
 // Constructors

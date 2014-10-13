@@ -14,7 +14,7 @@ class MainGame : public mage::AbstractGameLoop
 	// Attributes
 	//////////////////////////////////////////
 	private:
-		Scene scene;
+		dx9lib::Scene scene;
 
 	//////////////////////////////////////////
 	// AbstractGameLoop Methods

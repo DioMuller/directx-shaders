@@ -1,7 +1,7 @@
 #include "Object.h"
 #include <d3dx9math.h>
 
-
+using namespace dx9lib;
 
 //////////////////////////////////////////
 // Constructor / Destructor

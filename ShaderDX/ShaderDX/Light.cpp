@@ -1,5 +1,6 @@
 #include "Light.h"
 
+using namespace dx9lib;
 
 Light::Light(D3DXVECTOR3 direction, D3DXVECTOR3 ambient, D3DXVECTOR3 diffuse, D3DXVECTOR3 specular)
 {

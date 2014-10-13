@@ -1,10 +1,13 @@
 #pragma once
 #include "Object.h"
-class TerrainObject :
-	public Object
+
+namespace dx9lib
 {
-public:
-	TerrainObject();
-	~TerrainObject();
-};
+	class TerrainObject : public Object
+	{
+		public:
+			TerrainObject();
+			~TerrainObject();
+	};
+}
 

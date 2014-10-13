@@ -1,6 +1,8 @@
 #include "Vertex.h"
 #include "mage/HandleError.h"
 
+using namespace dx9lib;
+
 IDirect3DVertexDeclaration9* Vertex::declaration = nullptr;
 
 using namespace std;
