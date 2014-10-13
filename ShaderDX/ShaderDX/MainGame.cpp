@@ -1,12 +1,14 @@
 #include "MainGame.h"
 #include "MeshObject.h"
 
+using namespace dx9lib;
+
 // Setups the scene.
 void MainGame::setup(IDirect3DDevice9* device)
 {
 	running = true;
 
-	scene.loadFromFile(fromWString(getContentItemPath(CONTENT_SCENES, "Test.xml")));
+	scene.loadFromFile(Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Test.xml")));
 	scene.initialize(device);
 }
 

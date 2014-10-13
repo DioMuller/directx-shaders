@@ -112,7 +112,7 @@ void Scene::loadFromFile(std::string path)
 		{
 			std::string shaderPath = shaderElement->Attribute("File");
 
-			shader = new mage::Effect(getContentItemPath(CONTENT_SHADERS, shaderPath));
+			shader = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
 		}
 
 		/////////////////////
@@ -236,7 +236,7 @@ void Scene::loadFromFile(std::string path)
 				if (name == "MeshObject")
 				{
 					std::string id = nextObject->Attribute("Id");
-					std::wstring model = getContentItemPath(CONTENT_MODELS, nextObject->Attribute("Model"));
+					std::wstring model = Content::GetContentItemPath(Content::MODELS, nextObject->Attribute("Model"));
 					std::string tech = nextObject->Attribute("Tech");
 
 					object = new MeshObject(model, tech);

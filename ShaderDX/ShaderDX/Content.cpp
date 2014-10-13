@@ -1,6 +1,13 @@
 #include "Content.h"
 
-std::wstring getApplicationPath()
+using namespace dx9lib;
+
+const std::wstring Content::SCENES = L"Scenes";
+const std::wstring Content::MODELS = L"Models";
+const std::wstring Content::SHADERS = L"Shaders";
+const std::wstring Content::TEXTURES = L"Textures";
+
+std::wstring Content::GetApplicationPath()
 {
 	wchar_t path[PATH_MAX_LENGHT];
 	if (!GetCurrentDirectory(_countof(path), path))
@@ -12,32 +19,32 @@ std::wstring getApplicationPath()
 
 }
 
-std::wstring getContentPath(std::wstring type)
+std::wstring Content::GetContentPath(std::wstring type)
 {
-	return getApplicationPath() + L"\\Content\\" + type;
+	return GetApplicationPath() + L"\\Content\\" + type;
 }
 
 
-std::wstring getContentItemPathW(std::wstring type, std::wstring file)
+std::wstring Content::GetContentItemPathW(std::wstring type, std::wstring file)
 {
-	return getContentPath(type) + L"\\" + file;
+	return GetContentPath(type) + L"\\" + file;
 }
 
-std::wstring getContentItemPath(std::wstring type, std::string file)
+std::wstring Content::GetContentItemPath(std::wstring type, std::string file)
 {
-	std::wstring filew = toWString(file);
+	std::wstring filew = Text::ToWString(file);
 
-	return getContentItemPathW(type, filew);
+	return Content::GetContentItemPathW(type, filew);
 }
 
 // String functions
-std::string fromWString(std::wstring value)
+std::string Text::FromWString(std::wstring value)
 {
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 	return converter.to_bytes(value);
 }
 
-std::wstring toWString(std::string value)
+std::wstring Text::ToWString(std::string value)
 {
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 	return converter.from_bytes(value);

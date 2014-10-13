@@ -35,7 +35,7 @@ IDirect3DTexture9* Material::GetEmptyTexture(IDirect3DDevice9* device)
 {
 	if (!emptyTexture)
 	{
-		std::wstring texPath = getContentItemPathW(CONTENT_TEXTURES, L"whitetex.dds");
+		std::wstring texPath = Content::GetContentItemPathW(Content::TEXTURES, L"whitetex.dds");
 		HR(D3DXCreateTextureFromFile(device, texPath.c_str(), &emptyTexture));
 	}
 

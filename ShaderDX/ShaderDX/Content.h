@@ -1,5 +1,4 @@
-#ifndef __CONTENT_H__
-#define __CONTENT_H__
+#pragma once
 
 #include <Windows.h>
 #include <string>
@@ -8,18 +7,27 @@
 
 #define PATH_MAX_LENGHT 256
 
-#define CONTENT_SCENES L"Scenes"
-#define CONTENT_MODELS L"Models"
-#define CONTENT_SHADERS L"Shaders"
-#define CONTENT_TEXTURES L"Textures"
+namespace dx9lib
+{
+	class Content
+	{
+		public:
+			static const std::wstring SCENES;
+			static const std::wstring MODELS;
+			static const std::wstring SHADERS;
+			static const std::wstring TEXTURES;
 
+		public:
+			static std::wstring GetApplicationPath();
+			static std::wstring GetContentPath(std::wstring type = L"");
+			static std::wstring GetContentItemPathW(std::wstring type, std::wstring file);
+			static std::wstring GetContentItemPath(std::wstring type, std::string file);
+	};
 
-std::wstring getApplicationPath();
-std::wstring getContentPath(std::wstring type = L"");
-std::wstring getContentItemPathW(std::wstring type, std::wstring file);
-std::wstring getContentItemPath(std::wstring type, std::string file);
-
-std::string fromWString(std::wstring value);
-std::wstring toWString(std::string value);
-
-#endif //__CONTENT_H__
+	class Text
+	{
+		public:
+			static std::string FromWString(std::wstring value);
+			static std::wstring ToWString(std::string value);
+	};
+}
