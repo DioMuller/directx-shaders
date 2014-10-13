@@ -2,7 +2,7 @@
 
 using namespace dx9lib;
 
-SkydomeObject::SkydomeObject()
+SkydomeObject::SkydomeObject(std::string shaderTech) : Object(shaderTech)
 {
 }
 

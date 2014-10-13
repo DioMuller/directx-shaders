@@ -6,7 +6,7 @@ namespace dx9lib
 	class SkydomeObject : public Object
 	{
 		public:
-			SkydomeObject();
+			SkydomeObject(std::string shaderTech);
 			~SkydomeObject();
 	};
 }
