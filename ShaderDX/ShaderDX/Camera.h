@@ -16,6 +16,7 @@ namespace dx9lib
 			float fov;
 			float near_distance;
 			float far_distance;
+			float rotation;
 			bool changed;
 
 		//////////////////////////////////////////
