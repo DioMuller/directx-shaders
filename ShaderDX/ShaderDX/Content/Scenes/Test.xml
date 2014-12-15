@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene>
   <!-- Shader File -->
-  <Shader File="PhongShader.fx"/>
+  <Shader Type="Scene" File="PhongShader.fx"/>
+  <Shader Type="PostProcessing" File="PostProc.fx"/>
+
   <!-- Scene Camera -->
   <Camera Fov="60.0" Near="1.0" Far="5000.0">
     <Position X="1.0" Y="0.8" Z="2.0"/>

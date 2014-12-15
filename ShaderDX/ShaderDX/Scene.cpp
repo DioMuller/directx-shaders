@@ -6,6 +6,9 @@
 
 using namespace dx9lib;
 
+#define SHADER_SCENE "Scene"
+#define SHADER_POSTPROCESSING "PostProcessing"
+
 //////////////////////////////////////////
 // Constructors
 //////////////////////////////////////////
@@ -108,11 +111,22 @@ void Scene::loadFromFile(std::string path)
 		/////////////////////
 		auto shaderElement = root->FirstChildElement("Shader");
 
-		if (shaderElement)
+		while (shaderElement)
 		{
-			std::string shaderPath = shaderElement->Attribute("File");
+			std::string shaderFile = shaderElement->Attribute("File");
+			std::string shaderType = shaderElement->Attribute("Type");
+			std::string shaderPath = shaderType + "/" + shaderFile;
+			
+			if (shaderType == SHADER_SCENE)
+			{
+				shader = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
+			}
+			else if (shaderType == SHADER_POSTPROCESSING)
+			{
+				postProcessing = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
+			}
 
-			shader = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
+			shaderElement->NextSiblingElement();
 		}
 
 		/////////////////////

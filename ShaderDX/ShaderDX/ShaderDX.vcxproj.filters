@@ -40,6 +40,12 @@
     <Filter Include="DX9Lib\Rendering">
       <UniqueIdentifier>{74b38d93-39f2-4bcc-ba1f-2a04c308def6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Content\Shaders\Scene">
+      <UniqueIdentifier>{b3ca9484-b617-4350-890f-3cbb7c076f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Shaders\PostProcessing">
+      <UniqueIdentifier>{84ad0b49-9d91-4812-a9c4-6b1e63bcd69b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mage\AbstractGameLoop.h">
@@ -219,13 +225,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Content\Shaders\PhongShader.fx">
-      <Filter>Content\Shaders</Filter>
-    </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
     <Xml Include="Content\Scenes\Test.xml">
       <Filter>Content\Scenes</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Content\Shaders\Scene\PhongShader.fx">
+      <Filter>Content\Shaders\Scene</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\PostProcessing\PostProc.fx">
+      <Filter>Content\Shaders\PostProcessing</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
