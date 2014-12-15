@@ -69,45 +69,71 @@ void MeshObject::loadXFile(IDirect3DDevice9* device)
 
 	// Step 2: Find out if the mesh has light normals.
 	D3DVERTEXELEMENT9 elems[MAX_FVF_DECL_SIZE];
-	HR(meshSys->GetDeclaration(elems));
+	auto declaration = meshSys->GetDeclaration(elems);
 	bool hasNormals = false;
-	for (int i = 0; i < MAX_FVF_DECL_SIZE; ++i)
-	{
-		// Stops if D3DDECL_END() is found.
-		if (elems[i].Stream == 0xFF) break;
 
-		// Tests if it's Normal.
-		if (elems[i].Type == D3DDECLTYPE_FLOAT3 &&
-			elems[i].Usage == D3DDECLUSAGE_NORMAL &&
-			elems[i].UsageIndex == 0)
+	if (declaration)
+	{
+		for (int i = 0; i < MAX_FVF_DECL_SIZE; ++i)
 		{
-			hasNormals = true;
-			break;
+			// Stops if D3DDECL_END() is found.
+			if (elems[i].Stream == 0xFF) break;
+
+			// Tests if it's Normal.
+			if (elems[i].Type == D3DDECLTYPE_FLOAT3 &&
+				elems[i].Usage == D3DDECLUSAGE_NORMAL &&
+				elems[i].UsageIndex == 0)
+			{
+				hasNormals = true;
+				break;
+			}
 		}
+	}
+	else
+	{
+		HR(declaration);
 	}
 
 	// Step 3: Change the Mesh format to our vertex format.
-	D3DVERTEXELEMENT9 elements[64];
+	D3DVERTEXELEMENT9 elements[65];
 	UINT numElements = 0;
 	Vertex::getDeclaration(device)->GetDeclaration(elements, &numElements);
 
 	ID3DXMesh* temp = nullptr;
-	HR(meshSys->CloneMesh(D3DXMESH_SYSTEMMEM, elements, device, &temp));
-	meshSys->Release();
-	meshSys = temp;
-
-	// Step 4: If doesn't have normals, generate.
-	if (!hasNormals)
+	auto clone = meshSys->CloneMesh(D3DXMESH_SYSTEMMEM, elements, device, &temp);
+	if ( clone == S_OK)
 	{
-		HR(D3DXComputeNormals(meshSys, 0));
+		meshSys->Release();
+		meshSys = temp;
+
+		// Step 4: If doesn't have normals, generate.
+		if (!hasNormals)
+		{
+			HR(D3DXComputeNormals(meshSys, 0));
+		}
+
+		// Step 5: Mesh Optimization
+		ID3DXMesh* meshOut;
+		int optimization = meshSys->Optimize(D3DXMESH_MANAGED | D3DXMESHOPT_COMPACT | D3DXMESHOPT_ATTRSORT | D3DXMESHOPT_VERTEXCACHE,
+			(DWORD*)adjacencyBuffer->GetBufferPointer(), 0, 0, 0, &meshOut);
+		if (optimization == S_OK)
+		{
+			mesh = meshOut;
+			meshSys->Release();
+		}
+		else
+		{
+			HR(optimization);
+			mesh = meshSys;
+		}
+	}
+	else
+	{
+		mesh = meshSys;
+		HR(clone);
 	}
 
-	// Step 5: Mesh Optimization
-	HR(meshSys->Optimize(D3DXMESH_MANAGED | D3DXMESHOPT_COMPACT | D3DXMESHOPT_ATTRSORT | D3DXMESHOPT_VERTEXCACHE,
-		(DWORD*)adjacencyBuffer->GetBufferPointer(), 0, 0, 0, &mesh));
-
 	//Those won't be needed anymore.
-	meshSys->Release();
 	adjacencyBuffer->Release();
 
 	// Step 6: Extract Materials and load Textures.

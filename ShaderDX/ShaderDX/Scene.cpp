@@ -126,6 +126,7 @@ void Scene::loadFromFile(std::string path)
 			else if (shaderType == SHADER_POSTPROCESSING)
 			{
 				postProcessing = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
+				postProcessingTech = shaderElement->Attribute("Tech");
 			}
 
 			shaderElement = shaderElement->NextSiblingElement("Shader");

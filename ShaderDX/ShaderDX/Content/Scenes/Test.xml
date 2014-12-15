@@ -2,7 +2,7 @@
 <Scene>
   <!-- Shader File -->
   <Shader Type="Scene" File="PhongShader.fx"/>
-  <Shader Type="PostProcessing" File="PostProc.fx"/>
+  <Shader Type="PostProcessing" Tech="" File="PostProc.fx"/>
 
   <!-- Scene Camera -->
   <Camera Fov="60.0" Near="1.0" Far="5000.0">
@@ -25,15 +25,11 @@
         <Transform Type="Scale" X="1.5" Y="1.5" Z="1.5"/>
       </Transforms>
     </MeshObject>
-    <!-- Boo -->
-    <MeshObject Id="Boo" Model="Boo.x" Tech="PhongTech">
-      <Transforms>
-        <Transform Type="Position" X="-4.0" Y ="1" Z="0"/>
-        <Transform Type="Scale" X="0.05" Y="0.05" Z="0.05"/>
-      </Transforms>
-    </MeshObject>
     <!-- Dwarf -->
     <MeshObject Id="Dwarf" Model="Dwarf.x" Tech="PhongTech">
+      <Transforms>
+        <Transform Type="Position" X="0.0" Y ="0.0" Z="0"/>
+      </Transforms>
     </MeshObject>
   </Objects>
 </Scene>

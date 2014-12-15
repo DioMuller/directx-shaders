@@ -17,6 +17,7 @@ namespace dx9lib
 		private:
 			mage::Effect* shader;
 			mage::Effect* postProcessing;
+			std::string postProcessingTech;
 			std::vector<std::shared_ptr<Object>> objects;
 			std::shared_ptr<Camera> camera;
 			std::shared_ptr<Light> light;
