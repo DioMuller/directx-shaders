@@ -63,6 +63,11 @@ bool Scene::process(float time)
 // Paints the scene on each loop.
 void Scene::paint(IDirect3DDevice9* device)
 {
+	if (postProcessing)
+	{
+		//device->SetRenderTarget(0, )
+	}
+
 	// Clears the Scene.
 	HR(device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(154, 206, 235), 1.0f, 0));
 
@@ -125,8 +130,8 @@ void Scene::loadFromFile(std::string path)
 			}
 			else if (shaderType == SHADER_POSTPROCESSING)
 			{
-				postProcessing = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
-				postProcessingTech = shaderElement->Attribute("Tech");
+				//TODO: Non-fixed viewport size.
+				postProcessing = std::shared_ptr<PostEffect>(new PostEffect(Content::GetContentItemPath(Content::SHADERS, shaderPath), shaderElement->Attribute("Tech"), {0,0, 800,600 }));
 			}
 
 			shaderElement = shaderElement->NextSiblingElement("Shader");

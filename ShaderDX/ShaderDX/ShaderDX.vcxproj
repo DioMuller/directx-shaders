@@ -93,6 +93,7 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="MeshObject.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PostEffect.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SkydomeObject.h" />
     <ClInclude Include="TerrainObject.h" />
@@ -109,6 +110,7 @@
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MeshObject.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PostEffect.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SkydomeObject.cpp" />
     <ClCompile Include="TerrainObject.cpp" />
