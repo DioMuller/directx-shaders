@@ -134,6 +134,33 @@
     <Image Include="Content\Textures\Headgear.dds" />
     <Image Include="Content\Textures\Helmet.dds" />
     <Image Include="Content\Textures\Pack.dds" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastMS10.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS00.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS01.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS02.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS03.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS04.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS05.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS06.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS07.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS08.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS09.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS11.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS12.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS13.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS14.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS15.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS16.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS17.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS18.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS19.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS20.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS21.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS22.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS23.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS24.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS25.BMP" />
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS26.BMP" />
     <Image Include="Content\Textures\Pirate Ship_1024.png" />
     <Image Include="Content\Textures\ship1UV.bmp" />
     <Image Include="Content\Textures\texture.jpg" />
@@ -141,9 +168,14 @@
     <Image Include="Content\Textures\whitetex.dds" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Models\Boo.x" />
     <None Include="Content\Models\dino videogame.x" />
     <None Include="Content\Models\dino videogame2.x" />
     <None Include="Content\Models\Dwarf.x" />
+    <None Include="Content\Models\King Boo.x">
+      <DeploymentContent>false</DeploymentContent>
+    </None>
+    <None Include="Content\Models\Peach%27s Castle.x" />
     <None Include="Content\Models\Pirate Ship.x" />
     <None Include="Content\Models\samus low.x" />
     <None Include="Content\Models\ship1.x" />
@@ -152,7 +184,9 @@
     <None Include="Content\Models\viper test.x" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Content\Scenes\Test.xml" />
+    <Xml Include="Content\Scenes\Test.xml">
+      <DeploymentContent>false</DeploymentContent>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

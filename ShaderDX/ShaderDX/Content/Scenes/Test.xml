@@ -25,8 +25,15 @@
         <Transform Type="Scale" X="1.5" Y="1.5" Z="1.5"/>
       </Transforms>
     </MeshObject>
-    <!-- Dinossaur -->
-    <MeshObject Id="Dino" Model="Dwarf.x" Tech="PhongTech">
+    <!-- Boo -->
+    <MeshObject Id="Boo" Model="Boo.x" Tech="PhongTech">
+      <Transforms>
+        <Transform Type="Position" X="-4.0" Y ="1" Z="0"/>
+        <Transform Type="Scale" X="0.05" Y="0.05" Z="0.05"/>
+      </Transforms>
+    </MeshObject>
+    <!-- Dwarf -->
+    <MeshObject Id="Dwarf" Model="Dwarf.x" Tech="PhongTech">
     </MeshObject>
   </Objects>
 </Scene>

@@ -21,7 +21,7 @@ namespace dx9lib
 		// Public Attributes
 		//////////////////////////////////////////
 		public:
-			Position position;
+			Position transform;
 
 		//////////////////////////////////////////
 		// Private Attributes

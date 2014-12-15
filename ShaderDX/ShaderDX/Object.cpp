@@ -10,10 +10,10 @@ Object::Object(std::string shaderTech)
 {
 	this->shaderTech = shaderTech;
 	
-	position.position = { 0.0f, 0.0f, 0.0f };
-	position.scale = { 1.0f, 1.0f, 1.0f };
-	position.rotation = { 0.0f, 0.0f, 0.0f };
-	position.point_translation = { 0.0f, 0.0f, 0.0f };
+	transform.position = { 0.0f, 0.0f, 0.0f };
+	transform.scale = { 1.0f, 1.0f, 1.0f };
+	transform.rotation = { 0.0f, 0.0f, 0.0f };
+	transform.point_translation = { 0.0f, 0.0f, 0.0f };
 }
 
 
@@ -44,27 +44,27 @@ void Object::transformAndPaint(IDirect3DDevice9* device, mage::Effect* shader)
 
 	// Scale
 	D3DXMATRIX scale;
-	D3DXMatrixScaling(&scale, position.scale.x, position.scale.y, position.scale.z);
+	D3DXMatrixScaling(&scale, transform.scale.x, transform.scale.y, transform.scale.z);
 
 	// Point Translation
 	D3DXMATRIX point_translation;
-	D3DXMatrixTranslation(&point_translation, position.point_translation.x, 
-		position.point_translation.y, position.point_translation.z);
+	D3DXMatrixTranslation(&point_translation, transform.point_translation.x,
+		transform.point_translation.y, transform.point_translation.z);
 
 	// Rotation
 	D3DXMATRIX rotationX;
 	D3DXMATRIX rotationY;
 	D3DXMATRIX rotationZ;
 
-	D3DXMatrixRotationX(&rotationX, D3DXToRadian(position.rotation.x));
-	D3DXMatrixRotationY(&rotationY, D3DXToRadian(position.rotation.y));
-	D3DXMatrixRotationZ(&rotationZ, D3DXToRadian(position.rotation.z));
+	D3DXMatrixRotationX(&rotationX, D3DXToRadian(transform.rotation.x));
+	D3DXMatrixRotationY(&rotationY, D3DXToRadian(transform.rotation.y));
+	D3DXMatrixRotationZ(&rotationZ, D3DXToRadian(transform.rotation.z));
 
 	D3DXMATRIX rotation = rotationX * rotationY * rotationZ;
 
 	// Translation
 	D3DXMATRIX translation;
-	D3DXMatrixTranslation(&translation, position.position.x, position.position.y, position.position.z);
+	D3DXMatrixTranslation(&translation, transform.position.x, transform.position.y, transform.position.z);
 
 	shader->setMatrix("gWorld", scale * point_translation * rotation * translation);
 

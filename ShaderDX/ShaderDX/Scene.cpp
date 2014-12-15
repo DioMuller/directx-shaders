@@ -14,6 +14,8 @@ using namespace dx9lib;
 //////////////////////////////////////////
 Scene::Scene()
 {
+	shader = nullptr;
+	postProcessing = nullptr;
 }
 
 
@@ -260,7 +262,7 @@ void Scene::loadFromFile(std::string path)
 				if (object)
 				{
 					// Load Transforms
-					auto transforms = root->FirstChildElement("Transforms");
+					auto transforms = nextObject->FirstChildElement("Transforms");
 
 					if (transforms)
 					{
@@ -279,19 +281,19 @@ void Scene::loadFromFile(std::string path)
 							// Executes transform
 							if (type == "Scale")
 							{
-								object->position.scale = D3DXVECTOR3(x, y, z);
+								object->transform.scale = D3DXVECTOR3(x, y, z);
 							}
 							else if (type == "Position")
 							{
-								object->position.position = D3DXVECTOR3(x, y, z);
+								object->transform.position = D3DXVECTOR3(x, y, z);
 							}
 							else if (type == "PointTranslation")
 							{
-								object->position.point_translation = D3DXVECTOR3(x, y, z);
+								object->transform.point_translation = D3DXVECTOR3(x, y, z);
 							}
 							else if (type == "Rotation")
 							{
-								object->position.rotation = D3DXVECTOR3(x, y, z);
+								object->transform.rotation = D3DXVECTOR3(x, y, z);
 							}
 
 							// Get next element

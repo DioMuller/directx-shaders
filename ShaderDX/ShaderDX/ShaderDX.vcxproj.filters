@@ -194,6 +194,87 @@
     <Image Include="Content\Textures\texture.jpg">
       <Filter>Content\Textures</Filter>
     </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastMS10.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS00.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS01.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS02.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS03.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS04.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS05.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS06.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS07.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS08.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS09.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS11.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS12.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS13.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS14.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS15.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS16.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS17.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS18.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS19.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS20.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS21.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS22.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS23.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS24.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS25.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Peach%27s Castle.xCastSS26.BMP">
+      <Filter>Content\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Models\Dwarf.x">
@@ -221,6 +302,15 @@
       <Filter>Content\Models</Filter>
     </None>
     <None Include="Content\Models\vic viper.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\King Boo.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\Peach%27s Castle.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\Boo.x">
       <Filter>Content\Models</Filter>
     </None>
   </ItemGroup>
