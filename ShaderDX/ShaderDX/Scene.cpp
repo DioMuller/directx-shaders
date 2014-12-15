@@ -115,7 +115,7 @@ void Scene::loadFromFile(std::string path)
 		{
 			std::string shaderFile = shaderElement->Attribute("File");
 			std::string shaderType = shaderElement->Attribute("Type");
-			std::string shaderPath = shaderType + "/" + shaderFile;
+			std::string shaderPath = shaderType + "\\" + shaderFile;
 			
 			if (shaderType == SHADER_SCENE)
 			{
@@ -126,7 +126,7 @@ void Scene::loadFromFile(std::string path)
 				postProcessing = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
 			}
 
-			shaderElement->NextSiblingElement();
+			shaderElement = shaderElement->NextSiblingElement("Shader");
 		}
 
 		/////////////////////
