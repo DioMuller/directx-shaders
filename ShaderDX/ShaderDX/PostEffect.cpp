@@ -12,3 +12,18 @@ PostEffect::PostEffect(std::wstring effectFile, std::string tech, D3DXVECTOR4 di
 PostEffect::~PostEffect()
 {
 }
+
+void PostEffect::begin(IDirect3DDevice9* device)
+{
+
+}
+
+void PostEffect::process(IDirect3DDevice9* device)
+{
+
+}
+
+void PostEffect::end(IDirect3DDevice9* device)
+{
+
+}
