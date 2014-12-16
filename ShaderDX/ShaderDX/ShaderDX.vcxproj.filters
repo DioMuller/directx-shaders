@@ -105,7 +105,9 @@
     <ClInclude Include="TerrainObject.h">
       <Filter>DX9Lib\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="PostEffect.h" />
+    <ClInclude Include="PostEffect.h">
+      <Filter>DX9Lib\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp">
@@ -151,7 +153,9 @@
     <ClCompile Include="TerrainObject.cpp">
       <Filter>DX9Lib\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="PostEffect.cpp" />
+    <ClCompile Include="PostEffect.cpp">
+      <Filter>DX9Lib\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Content\Textures\Headgear.dds">

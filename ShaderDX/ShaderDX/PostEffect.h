@@ -10,6 +10,9 @@ class PostEffect
 		D3DVIEWPORT9 viewport;
 		mage::Effect* shader;
 		std::string tech;
+		IDirect3DSurface9* defaultTarget;
+		IDirect3DSurface9* postProcessingTarget;
+		IDirect3DTexture9* renderedTexture;
 	
 	//////////////////////////////////////////
 	// Constructor
