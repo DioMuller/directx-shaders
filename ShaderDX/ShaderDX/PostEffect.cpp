@@ -53,7 +53,10 @@ void PostEffect::begin(IDirect3DDevice9* device)
 
 	// Change render target.
 	HR(device->GetRenderTarget(0, &defaultTarget));
-	HR(device->SetRenderTarget(0, postProcessingTarget))
+	HR(device->SetRenderTarget(0, postProcessingTarget));
+
+	device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(154, 206, 235), 1.0f, 0);
+	device->BeginScene();
 }
 
 void PostEffect::process(IDirect3DDevice9* device)
@@ -74,6 +77,12 @@ void PostEffect::process(IDirect3DDevice9* device)
 
 void PostEffect::end(IDirect3DDevice9* device)
 {
+	device->EndScene();
+	if (defaultTarget) {
+		HR(device->SetRenderTarget(0, defaultTarget));
+		defaultTarget = nullptr;
+	}
+
 	renderedTexture->Release();
 	renderedTexture = nullptr;
 
