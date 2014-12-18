@@ -42,6 +42,11 @@ void Scene::initialize(IDirect3DDevice9* device)
 			exit(1);
 		}
 	}
+	
+	if (postProcessing)
+	{
+		postProcessing->initialize(device);
+	}
 }
 
 // Process whatever should be executed every turn.
@@ -82,6 +87,13 @@ void Scene::paint(IDirect3DDevice9* device)
 	for (auto object : objects)
 	{
 		object->transformAndPaint(device, shader);
+	}
+
+	if (postProcessing)
+	{
+		postProcessing->begin(device);
+		postProcessing->process(device);
+		postProcessing->end(device);
 	}
 
 	// Ends drawing the scene.

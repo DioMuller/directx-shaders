@@ -31,6 +31,7 @@ namespace dx9lib
 		// Methods
 		//////////////////////////////////////////
 		public:
+			void initialize(IDirect3DDevice9* device);
 			void begin(IDirect3DDevice9* device);
 			void process(IDirect3DDevice9* device);
 			void end(IDirect3DDevice9* device);

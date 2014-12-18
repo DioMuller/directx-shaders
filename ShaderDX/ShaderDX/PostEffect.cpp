@@ -18,14 +18,23 @@ PostEffect::~PostEffect()
 	if (shader) delete shader;
 }
 
-void PostEffect::begin(IDirect3DDevice9* device)
+void PostEffect::initialize(IDirect3DDevice9* device)
 {
+	if (shader)
+	{
+		std::string error = shader->compile(device);
+		if (!error.empty()) {
+			MessageBoxA(0, error.c_str(), 0, 0);
+			exit(1);
+		}
+	}
+
 	// Create Vertex buffer if it doesn't exist.
 	if (!vertexBuffer)
 	{
 		std::vector<Vertex> vertices =
 		{
-			//px, py, pz, nx, ny, nz,  u,  v
+			//px,py,pz,nx,ny,nz, u, v
 			{ -1, 1, 0, 0, 0, 0, 0, 0 },
 			{ 1, 1, 0, 0, 0, 0, 1, 0 },
 			{ -1, -1, 0, 0, 0, 0, 0, 1 },
@@ -34,7 +43,10 @@ void PostEffect::begin(IDirect3DDevice9* device)
 
 		vertexBuffer = Vertex::createVertexBuffer(device, vertices);
 	}
+}
 
+void PostEffect::begin(IDirect3DDevice9* device)
+{
 	// Create texture from current render.
 	HR(device->CreateTexture(viewport.Width, viewport.Height, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT, &renderedTexture, 0));
 	HR(renderedTexture->GetSurfaceLevel(0, &postProcessingTarget));
@@ -46,9 +58,12 @@ void PostEffect::begin(IDirect3DDevice9* device)
 
 void PostEffect::process(IDirect3DDevice9* device)
 {
+	if (!shader || !renderedTexture) return;
+
 	device->SetViewport(&viewport);
 	
-	shader->setTexture("", renderedTexture);
+	shader->setTechnique(this->tech);
+	shader->setTexture("gTexture", renderedTexture);
 	shader->execute([this](IDirect3DDevice9* device)
 	{
 		HR(device->SetStreamSource(0, vertexBuffer, 0, sizeof(Vertex)));
@@ -59,9 +74,9 @@ void PostEffect::process(IDirect3DDevice9* device)
 
 void PostEffect::end(IDirect3DDevice9* device)
 {
-	delete renderedTexture;
+	renderedTexture->Release();
 	renderedTexture = nullptr;
 
-	delete postProcessingTarget;
+	postProcessingTarget->Release();
 	postProcessingTarget = nullptr;
 }
