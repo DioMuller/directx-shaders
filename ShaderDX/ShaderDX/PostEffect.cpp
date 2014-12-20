@@ -54,13 +54,20 @@ void PostEffect::begin(IDirect3DDevice9* device)
 	// Change render target.
 	HR(device->GetRenderTarget(0, &defaultTarget));
 	HR(device->SetRenderTarget(0, postProcessingTarget));
-
-	device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(154, 206, 235), 1.0f, 0);
-	device->BeginScene();
 }
 
 void PostEffect::process(IDirect3DDevice9* device)
 {
+	device->EndScene();
+
+	if (defaultTarget) {
+		HR(device->SetRenderTarget(0, defaultTarget));
+		defaultTarget = nullptr;
+	}
+
+	device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(154, 206, 235), 1.0f, 0);
+	device->BeginScene();
+
 	if (!shader || !renderedTexture) return;
 
 	device->SetViewport(&viewport);
@@ -73,16 +80,12 @@ void PostEffect::process(IDirect3DDevice9* device)
 		HR(device->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2));
 	});
 
+	device->EndScene();
+
 }
 
 void PostEffect::end(IDirect3DDevice9* device)
 {
-	device->EndScene();
-	if (defaultTarget) {
-		HR(device->SetRenderTarget(0, defaultTarget));
-		defaultTarget = nullptr;
-	}
-
 	renderedTexture->Release();
 	renderedTexture = nullptr;
 

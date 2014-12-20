@@ -20,10 +20,13 @@ sampler gTextureSampler = sampler_state
 };
 
 // Vertex shader
-OutputVS TransformVS(float2 posL : POSITION0, float2 tex0 : TEXCOORD0)
+OutputVS TransformVS(float3 posL : POSITION0, float3 normal : NORMAL0, float2 tex0 : TEXCOORD0)
 {
+	// Initializes structure.
 	OutputVS outVS = (OutputVS)0;
-	outVS.pos = float4(posL, 0.0f, 1.0f);
+
+	// Transforms scene.
+	outVS.pos = float4(posL, 1.0f);
 	outVS.tex0 = tex0;
 	return outVS;
 }

@@ -70,7 +70,7 @@ void Scene::paint(IDirect3DDevice9* device)
 {
 	if (postProcessing)
 	{
-		//device->SetRenderTarget(0, )
+		postProcessing->begin(device);
 	}
 
 	// Clears the Scene.
@@ -89,18 +89,22 @@ void Scene::paint(IDirect3DDevice9* device)
 		object->transformAndPaint(device, shader);
 	}
 
-	// Ends drawing the scene.
-	HR(device->EndScene());
-
 	if (postProcessing)
 	{
-		postProcessing->begin(device);
 		postProcessing->process(device);
-		postProcessing->end(device);
+	}
+	else
+	{
+		// Ends drawing the scene.
+		HR(device->EndScene());
 	}
 
 	// Presents scene / switches buffer.
 	HR(device->Present(NULL, NULL, NULL, NULL));
+	if (postProcessing)
+	{
+		postProcessing->end(device);
+	}
 }
 
 // Executed on end.
