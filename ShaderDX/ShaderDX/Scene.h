@@ -8,6 +8,8 @@
 #include "Light.h"
 #include "PostEffect.h"
 
+#define CLEAR_COLOR D3DCOLOR_XRGB(154, 206, 235)
+
 namespace dx9lib
 {
 	class Scene

@@ -224,11 +224,11 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="Content\Shaders\PostProcessing\PostProcessing.fx">
+      <Filter>Content\Shaders\PostProcessing</Filter>
+    </FxCompile>
     <FxCompile Include="Content\Shaders\Scene\PhongShader.fx">
       <Filter>Content\Shaders\Scene</Filter>
-    </FxCompile>
-    <FxCompile Include="Content\Shaders\PostProcessing\PostProc.fx">
-      <Filter>Content\Shaders\PostProcessing</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

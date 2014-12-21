@@ -13,10 +13,41 @@ uniform extern float2 gScreenSize;
 /////////////////////////////////////
 // Constants
 /////////////////////////////////////
-static const float3x3 cSobelMatrix = float3x3(
+
+static const float3x3 cSobelMaskGx = float3x3(
+	-1, -2, -1,
+	 0,  0,  0,
+	 1,  2,  1
+	);
+
+static const float3x3 cSobelMaskGy = float3x3(
+	-1, 0, 1,
+	-2, 0, 2,
+	-1, 0, 1
+	);
+
+static const float3x3 cPrewittMaskGx = float3x3(
+	-1, -1, -1,
+	0, 0, 0,
+	1, 1, 1
+	);
+
+static const float3x3 cPrewittMaskGy = float3x3(
+	-1, 0, 1,
+	-1, 0, 1,
+	-1, 0, 1
+	);
+
+static const float3x3 cLaplaceMask = float3x3(
 		0,  1,  0,
 		1, -4,  1,
 		0,  1,  0
+	);
+
+static const float3x3 cMeanMask = float3x3(
+	1, 1, 1,
+	1, 1, 1,
+	1, 1, 1
 	);
 
 /////////////////////////////////////
@@ -105,9 +136,35 @@ float4 GrayscalePS(float2 tex0 : TEXCOORD0) : COLOR
 
 float4 SobelPS(float2 tex0 : TEXCOORD0) : COLOR
 {
-	float value = ApplyMask(gTextureSampler, gScreenSize, tex0, cSobelMatrix);
+	float4 gx = ApplyMask(gTextureSampler, gScreenSize, tex0, cSobelMaskGx);
+	float4 gy = ApplyMask(gTextureSampler, gScreenSize, tex0, cSobelMaskGy);
+	float4 value = (gx + gy) / 2;
 
-	return float4(value, value, value, 1.0);
+	return value;
+}
+
+float4 PrewittPS(float2 tex0 : TEXCOORD0) : COLOR
+{
+	float4 gx = ApplyMask(gTextureSampler, gScreenSize, tex0, cPrewittMaskGx);
+	float4 gy = ApplyMask(gTextureSampler, gScreenSize, tex0, cPrewittMaskGy);
+	float4 value = (gx + gy) / 2;
+
+	return value;
+}
+
+
+float4 LaplacePS(float2 tex0 : TEXCOORD0) : COLOR
+{
+	float4 value = ApplyMask(gTextureSampler, gScreenSize, tex0, cLaplaceMask);
+
+	return value;
+}
+
+float4 MeanPS(float2 tex0 : TEXCOORD0) : COLOR
+{
+	float4 value = ApplyMask(gTextureSampler, gScreenSize, tex0, cMeanMask);
+
+	return float4(value.rgb / 9.0, 1.0);
 }
 
 /////////////////////////////////////
@@ -129,6 +186,36 @@ technique SobelTech
 	{
 		vertexShader = compile vs_2_0 TransformVS();
 		pixelShader = compile ps_2_0 SobelPS();
+		FillMode = Solid;
+	}
+};
+
+technique PrewittTech
+{
+	pass P0
+	{
+		vertexShader = compile vs_2_0 TransformVS();
+		pixelShader = compile ps_2_0 PrewittPS();
+		FillMode = Solid;
+	}
+};
+
+technique LaplaceTech
+{
+	pass P0
+	{
+		vertexShader = compile vs_2_0 TransformVS();
+		pixelShader = compile ps_2_0 SobelPS();
+		FillMode = Solid;
+	}
+};
+
+technique MeanTech
+{
+	pass P0
+	{
+		vertexShader = compile vs_2_0 TransformVS();
+		pixelShader = compile ps_2_0 MeanPS();
 		FillMode = Solid;
 	}
 };

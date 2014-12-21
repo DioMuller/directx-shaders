@@ -74,7 +74,7 @@ void Scene::paint(IDirect3DDevice9* device)
 	}
 
 	// Clears the Scene.
-	HR(device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(154, 206, 235), 1.0f, 0));
+	HR(device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, CLEAR_COLOR, 1.0f, 0));
 
 	// Begins drawing the scene.
 	HR(device->BeginScene());
