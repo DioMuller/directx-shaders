@@ -80,7 +80,36 @@ float ToGrayscale(float3 color)
 	return (0.299 * color.r) + (0.587 * color.g) + (0.114 * color.b);
 }
 
-float4 ApplyMask(sampler2D tex, float2 imageSize, float2 position, float3x3 mask)
+float4 ApplyMaskGrayscale(sampler2D tex, float2 imageSize, float2 position, float3x3 mask)
+{
+	//Do not process borders.
+	if (position.x == 0 || position.y == 0) return 0;
+	if (position.x == 1 || position.y == 1) return 0;
+
+	// Size difference between pixels
+	float2 diff = GetPixelSize(imageSize);
+
+	// Upper row
+	float m00 = ToGrayscale(tex2D(tex, float2(position.x - diff.x, position.y - diff.y)).rgb) * mask._m00;
+	float m01 = ToGrayscale(tex2D(tex, float2(position.x, position.y - diff.y)).rgb) * mask._m01;
+	float m02 = ToGrayscale(tex2D(tex, float2(position.x + diff.x, position.y - diff.y)).rgb) * mask._m02;
+
+	// Middle row
+	float m10 = ToGrayscale(tex2D(tex, float2(position.x - diff.x, position.y)).rgb) * mask._m10;
+	float m11 = ToGrayscale(tex2D(tex, float2(position.x, position.y)).rgb) * mask._m11;
+	float m12 = ToGrayscale(tex2D(tex, float2(position.x + diff.x, position.y)).rgb) * mask._m12;
+
+	// Lower row
+	float m20 = ToGrayscale(tex2D(tex, float2(position.x - diff.x, position.y + diff.y)).rgb) * mask._m20;
+	float m21 = ToGrayscale(tex2D(tex, float2(position.x, position.y + diff.y)).rgb) * mask._m21;
+	float m22 = ToGrayscale(tex2D(tex, float2(position.x + diff.x, position.y = diff.y)).rgb) * mask._m22;
+
+	float gray = (m00 + m01 + m02 + m10 + m11 + m12 + m20 + m21 + m22);
+
+	return float4(gray, gray, gray, 1.0);
+}
+
+float4 ApplyMaskColor(sampler2D tex, float2 imageSize, float2 position, float3x3 mask)
 {
 	//Do not process borders.
 	if ( position.x == 0 || position.y == 0 ) return 0;
@@ -136,8 +165,8 @@ float4 GrayscalePS(float2 tex0 : TEXCOORD0) : COLOR
 
 float4 SobelPS(float2 tex0 : TEXCOORD0) : COLOR
 {
-	float4 gx = ApplyMask(gTextureSampler, gScreenSize, tex0, cSobelMaskGx);
-	float4 gy = ApplyMask(gTextureSampler, gScreenSize, tex0, cSobelMaskGy);
+	float4 gx = ApplyMaskGrayscale(gTextureSampler, gScreenSize, tex0, cSobelMaskGx);
+	float4 gy = ApplyMaskGrayscale(gTextureSampler, gScreenSize, tex0, cSobelMaskGy);
 	float4 value = (gx + gy) / 2;
 
 	return value;
@@ -145,8 +174,8 @@ float4 SobelPS(float2 tex0 : TEXCOORD0) : COLOR
 
 float4 PrewittPS(float2 tex0 : TEXCOORD0) : COLOR
 {
-	float4 gx = ApplyMask(gTextureSampler, gScreenSize, tex0, cPrewittMaskGx);
-	float4 gy = ApplyMask(gTextureSampler, gScreenSize, tex0, cPrewittMaskGy);
+	float4 gx = ApplyMaskGrayscale(gTextureSampler, gScreenSize, tex0, cPrewittMaskGx);
+	float4 gy = ApplyMaskGrayscale(gTextureSampler, gScreenSize, tex0, cPrewittMaskGy);
 	float4 value = (gx + gy) / 2;
 
 	return value;
@@ -155,14 +184,14 @@ float4 PrewittPS(float2 tex0 : TEXCOORD0) : COLOR
 
 float4 LaplacePS(float2 tex0 : TEXCOORD0) : COLOR
 {
-	float4 value = ApplyMask(gTextureSampler, gScreenSize, tex0, cLaplaceMask);
+	float4 value = ApplyMaskGrayscale(gTextureSampler, gScreenSize, tex0, cLaplaceMask);
 
 	return value;
 }
 
 float4 MeanPS(float2 tex0 : TEXCOORD0) : COLOR
 {
-	float4 value = ApplyMask(gTextureSampler, gScreenSize, tex0, cMeanMask);
+	float4 value = ApplyMaskColor(gTextureSampler, gScreenSize, tex0, cMeanMask);
 
 	return float4(value.rgb / 9.0, 1.0);
 }
@@ -174,8 +203,8 @@ technique GrayscaleTech
 {
 	pass P0
 	{
-		vertexShader = compile vs_2_0 TransformVS();
-		pixelShader = compile ps_2_0 GrayscalePS();
+		vertexShader = compile vs_3_0 TransformVS();
+		pixelShader = compile ps_3_0 GrayscalePS();
 		FillMode = Solid;
 	}
 };
@@ -184,8 +213,8 @@ technique SobelTech
 {
 	pass P0
 	{
-		vertexShader = compile vs_2_0 TransformVS();
-		pixelShader = compile ps_2_0 SobelPS();
+		vertexShader = compile vs_3_0 TransformVS();
+		pixelShader = compile ps_3_0 SobelPS();
 		FillMode = Solid;
 	}
 };
@@ -194,8 +223,8 @@ technique PrewittTech
 {
 	pass P0
 	{
-		vertexShader = compile vs_2_0 TransformVS();
-		pixelShader = compile ps_2_0 PrewittPS();
+		vertexShader = compile vs_3_0 TransformVS();
+		pixelShader = compile ps_3_0 PrewittPS();
 		FillMode = Solid;
 	}
 };
@@ -204,8 +233,8 @@ technique LaplaceTech
 {
 	pass P0
 	{
-		vertexShader = compile vs_2_0 TransformVS();
-		pixelShader = compile ps_2_0 SobelPS();
+		vertexShader = compile vs_3_0 TransformVS();
+		pixelShader = compile ps_3_0 LaplacePS();
 		FillMode = Solid;
 	}
 };
@@ -214,8 +243,8 @@ technique MeanTech
 {
 	pass P0
 	{
-		vertexShader = compile vs_2_0 TransformVS();
-		pixelShader = compile ps_2_0 MeanPS();
+		vertexShader = compile vs_3_0 TransformVS();
+		pixelShader = compile ps_3_0 MeanPS();
 		FillMode = Solid;
 	}
 };
