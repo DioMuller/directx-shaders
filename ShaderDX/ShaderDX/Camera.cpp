@@ -2,7 +2,7 @@
 #include "mage/GameWindow.h"
 #include "KeyboardInput.h"
 
-#define CAMERA_SPEED 10
+#define CAMERA_SPEED 25.0f
 
 using namespace dx9lib;
 
@@ -45,7 +45,10 @@ bool Camera::process(float time)
 	// Check Movement
 	if (x != 0 || z != 0)
 	{
-		move(time * (float)x, 0.0f, time * (float)z);
+		float mx = (float) x * time * CAMERA_SPEED;
+		float mz = (float) z * time * CAMERA_SPEED;
+
+		move(mx, 0.0f, mz);
 	}
 	
 	// Return!

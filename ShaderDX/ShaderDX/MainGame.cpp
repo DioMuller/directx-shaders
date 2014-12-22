@@ -47,6 +47,6 @@ void MainGame::processEvent(const mage::WindowsEvent& evt)
 	}
 	else if (evt.type == WM_KEYUP)
 	{
-		KeyboardInput::update(evt.wParam, true);
+		KeyboardInput::update(evt.wParam, false);
 	}
 }
