@@ -43,6 +43,8 @@ namespace dx9lib
 			void setPosition(D3DXVECTOR3 position, D3DXVECTOR3 target, D3DXVECTOR3 up);
 			// Sets Camera Projection Matrix
 			void setProjection(float fov, float near_distance, float far_distance);
+
+			void move(float x, float y, float z);
 	};
 
 }

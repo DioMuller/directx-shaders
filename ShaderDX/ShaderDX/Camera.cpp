@@ -1,5 +1,8 @@
 #include "Camera.h"
 #include "mage/GameWindow.h"
+#include "KeyboardInput.h"
+
+#define CAMERA_SPEED 10
 
 using namespace dx9lib;
 
@@ -17,6 +20,35 @@ Camera::~Camera()
 
 bool Camera::process(float time)
 {
+	int x = 0, z = 0;
+
+	// X
+	if (KeyboardInput::isPressed(Keys::RIGHT) || KeyboardInput::isPressed(Keys::D))
+	{
+		x += 1;
+	}
+	if (KeyboardInput::isPressed(Keys::LEFT) || KeyboardInput::isPressed(Keys::A))
+	{
+		x -= 1;
+	}
+
+	// Z
+	if (KeyboardInput::isPressed(Keys::UP) || KeyboardInput::isPressed(Keys::W))
+	{
+		z += 1;
+	}
+	if (KeyboardInput::isPressed(Keys::DOWN) || KeyboardInput::isPressed(Keys::S))
+	{
+		z -= 1;
+	}
+
+	// Check Movement
+	if (x != 0 || z != 0)
+	{
+		move(time * (float)x, 0.0f, time * (float)z);
+	}
+	
+	// Return!
 	return true;
 }
 
@@ -59,6 +91,19 @@ void Camera::setPosition(D3DXVECTOR3 position, D3DXVECTOR3 target, D3DXVECTOR3 u
 	this->position = position;
 	this->target = target;
 	this->up = up;
+	changed = true;
+}
+
+void Camera::move(float x, float y, float z)
+{
+	this->position.x += x;
+	this->position.y += y;
+	this->position.z += z;
+
+	this->target.x += x;
+	this->target.y += y;
+	this->target.z += z;
+
 	changed = true;
 }
 

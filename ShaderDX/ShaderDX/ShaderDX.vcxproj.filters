@@ -46,6 +46,9 @@
     <Filter Include="Content\Shaders\PostProcessing">
       <UniqueIdentifier>{84ad0b49-9d91-4812-a9c4-6b1e63bcd69b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DX9Lib\Input">
+      <UniqueIdentifier>{ab9054be-8cbe-4f45-b0a1-90d44fe27879}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mage\AbstractGameLoop.h">
@@ -108,6 +111,9 @@
     <ClInclude Include="PostEffect.h">
       <Filter>DX9Lib\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="KeyboardInput.h">
+      <Filter>DX9Lib\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp">
@@ -155,6 +161,9 @@
     </ClCompile>
     <ClCompile Include="PostEffect.cpp">
       <Filter>DX9Lib\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInput.cpp">
+      <Filter>DX9Lib\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

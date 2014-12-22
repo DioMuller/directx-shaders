@@ -7,6 +7,7 @@
 #include <vector>
 #include <memory>
 #include "Scene.h"
+#include "KeyboardInput.h"
 
 class MainGame : public mage::AbstractGameLoop
 {
