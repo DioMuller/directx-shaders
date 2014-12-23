@@ -6,7 +6,7 @@ namespace dx9lib
 	class TerrainObject : public Object
 	{
 		public:
-			TerrainObject(std::string shaderTech);
+			TerrainObject(std::string shader, std::string shaderTech);
 			~TerrainObject();
 	};
 }

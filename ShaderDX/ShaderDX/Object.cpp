@@ -6,8 +6,9 @@ using namespace dx9lib;
 //////////////////////////////////////////
 // Constructor / Destructor
 //////////////////////////////////////////
-Object::Object(std::string shaderTech)
+Object::Object(std::string shader, std::string shaderTech)
 {
+	this->shader = shader;
 	this->shaderTech = shaderTech;
 	
 	transform.position = { 0.0f, 0.0f, 0.0f };
@@ -76,4 +77,10 @@ void Object::transformAndPaint(IDirect3DDevice9* device, mage::Effect* shader)
 void Object::paint(IDirect3DDevice9* device, mage::Effect* shader)
 {
 
+}
+
+// Get the shader ID.
+std::string Object::shaderName()
+{
+	return shader;
 }

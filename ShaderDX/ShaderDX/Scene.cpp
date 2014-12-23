@@ -6,7 +6,7 @@
 
 using namespace dx9lib;
 
-#define SHADER_SCENE "Scene"
+#define SHADER_OBJECT "Object"
 #define SHADER_POSTPROCESSING "PostProcessing"
 
 //////////////////////////////////////////
@@ -14,16 +14,18 @@ using namespace dx9lib;
 //////////////////////////////////////////
 Scene::Scene()
 {
-	shader = nullptr;
+	objectShaders = std::map<std::string, mage::Effect*>();
 	postProcessing = nullptr;
 }
 
 
 Scene::~Scene()
 {
-	if (shader)
+	while (!objectShaders.empty())
 	{
-		delete shader;
+		auto it = objectShaders.begin();
+		objectShaders.erase(it->first);
+		delete it->second;
 	}
 }
 
@@ -34,9 +36,9 @@ Scene::~Scene()
 // Setups the scene.
 void Scene::initialize(IDirect3DDevice9* device)
 {
-	if (shader)
+	for (auto it = objectShaders.begin(); it != objectShaders.end(); ++it)
 	{
-		std::string error = shader->compile(device);
+		std::string error = it->second->compile(device);
 		if (!error.empty()) {
 			MessageBoxA(0, error.c_str(), 0, 0);
 			exit(1);
@@ -79,14 +81,21 @@ void Scene::paint(IDirect3DDevice9* device)
 	// Begins drawing the scene.
 	HR(device->BeginScene());
 
-	// Update camera transform and turn lights on.
-	camera->transform(device, shader);
-	light->paint(device, shader);
-
-	// Draw all the objects on the scene.
-	for (auto object : objects)
+	for (auto it = objectShaders.begin(); it != objectShaders.end(); ++it)
 	{
-		object->transformAndPaint(device, shader);
+		auto shader = it->second;
+		// Update camera transform and turn lights on.
+		camera->transform(device, shader);
+		light->paint(device, shader);
+
+		// Draw all the objects on the scene.
+		for (auto object : objects)
+		{
+			if (object->shaderName() == it->first)
+			{
+				object->transformAndPaint(device, shader);
+			}
+		}
 	}
 
 	if (postProcessing)
@@ -110,10 +119,12 @@ void Scene::paint(IDirect3DDevice9* device)
 // Executed on end.
 void Scene::finish(IDirect3DDevice9* device)
 {
-	if (shader)
+	while (!objectShaders.empty())
 	{
-		delete shader;
-		shader = nullptr;
+		auto it = objectShaders.begin();
+		delete it->second;
+
+		objectShaders.erase(it->first);
 	}
 }
 
@@ -139,11 +150,12 @@ void Scene::loadFromFile(std::string path)
 		{
 			std::string shaderFile = shaderElement->Attribute("File");
 			std::string shaderType = shaderElement->Attribute("Type");
+			std::string shaderId = shaderElement->Attribute("Id");
 			std::string shaderPath = shaderType + "\\" + shaderFile;
 			
-			if (shaderType == SHADER_SCENE)
+			if (shaderType == SHADER_OBJECT)
 			{
-				shader = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
+				objectShaders[shaderId] = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
 			}
 			else if (shaderType == SHADER_POSTPROCESSING)
 			{
@@ -162,9 +174,9 @@ void Scene::loadFromFile(std::string path)
 		if (cameraElement)
 		{
 			// Camera Parameters
-			float fov = std::atof(cameraElement->Attribute("Fov"));
-			float neardist = std::atof(cameraElement->Attribute("Near"));
-			float fardist = std::atof(cameraElement->Attribute("Far"));
+			float fov = std::stof(cameraElement->Attribute("Fov"));
+			float neardist = std::stof(cameraElement->Attribute("Near"));
+			float fardist = std::stof(cameraElement->Attribute("Far"));
 
 			// Camera Position
 			auto cameraPosition = cameraElement->FirstChildElement("Position");
@@ -275,10 +287,11 @@ void Scene::loadFromFile(std::string path)
 				if (name == "MeshObject")
 				{
 					std::string id = nextObject->Attribute("Id");
+					std::string shader = nextObject->Attribute("Shader");
 					std::wstring model = Content::GetContentItemPath(Content::MODELS, nextObject->Attribute("Model"));
 					std::string tech = nextObject->Attribute("Tech");
 
-					object = new MeshObject(model, tech);
+					object = new MeshObject(model,shader, tech);
 				}
 
 				// In-Object transformations, if the object was loaded.

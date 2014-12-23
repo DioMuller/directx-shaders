@@ -27,13 +27,14 @@ namespace dx9lib
 		// Private Attributes
 		//////////////////////////////////////////
 		protected:
+			std::string shader;
 			std::string shaderTech;
 
 		//////////////////////////////////////////
 		// Constructor / Destructor
 		//////////////////////////////////////////
 		public:
-			Object(std::string shaderTech);
+			Object(std::string shader, std::string shaderTech);
 			~Object();
 
 		//////////////////////////////////////////
@@ -46,6 +47,9 @@ namespace dx9lib
 			virtual bool process(float time);
 			// Transforms object and paints it.
 			void transformAndPaint(IDirect3DDevice9* device, mage::Effect* shader);
+			// Get the shader ID.
+			std::string shaderName();
+
 
 		protected:
 			// Paints the scene on each loop.

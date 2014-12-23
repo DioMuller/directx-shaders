@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <map>
 
 #include "Mage/Effect.h"
 
@@ -18,7 +19,7 @@ namespace dx9lib
 		// Attributes
 		//////////////////////////////////////////
 		private:
-			mage::Effect* shader;
+			std::map<std::string, mage::Effect*> objectShaders;
 			std::shared_ptr<PostEffect> postProcessing;
 			std::vector<std::shared_ptr<Object>> objects;
 			std::shared_ptr<Camera> camera;

@@ -40,14 +40,14 @@
     <Filter Include="DX9Lib\Rendering">
       <UniqueIdentifier>{74b38d93-39f2-4bcc-ba1f-2a04c308def6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\Shaders\Scene">
-      <UniqueIdentifier>{b3ca9484-b617-4350-890f-3cbb7c076f5a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Content\Shaders\PostProcessing">
       <UniqueIdentifier>{84ad0b49-9d91-4812-a9c4-6b1e63bcd69b}</UniqueIdentifier>
     </Filter>
     <Filter Include="DX9Lib\Input">
       <UniqueIdentifier>{ab9054be-8cbe-4f45-b0a1-90d44fe27879}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Shaders\Object">
+      <UniqueIdentifier>{b3ca9484-b617-4350-890f-3cbb7c076f5a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -102,9 +102,6 @@
     <ClInclude Include="Scene.h">
       <Filter>DX9Lib\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SkydomeObject.h">
-      <Filter>DX9Lib\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="TerrainObject.h">
       <Filter>DX9Lib\Objects</Filter>
     </ClInclude>
@@ -113,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="KeyboardInput.h">
       <Filter>DX9Lib\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyboxObject.h">
+      <Filter>DX9Lib\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +153,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>DX9Lib\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="SkydomeObject.cpp">
-      <Filter>DX9Lib\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="TerrainObject.cpp">
       <Filter>DX9Lib\Objects</Filter>
     </ClCompile>
@@ -164,6 +161,9 @@
     </ClCompile>
     <ClCompile Include="KeyboardInput.cpp">
       <Filter>DX9Lib\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyboxObject.cpp">
+      <Filter>DX9Lib\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -233,14 +233,14 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Content\Shaders\Scene\PhongShader.fx">
-      <Filter>Content\Shaders\Scene</Filter>
-    </FxCompile>
     <FxCompile Include="Content\Shaders\PostProcessing\Masks.fx">
       <Filter>Content\Shaders\PostProcessing</Filter>
     </FxCompile>
     <FxCompile Include="Content\Shaders\PostProcessing\CRT.fx">
       <Filter>Content\Shaders\PostProcessing</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\Object\PhongShader.fx">
+      <Filter>Content\Shaders\Object</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

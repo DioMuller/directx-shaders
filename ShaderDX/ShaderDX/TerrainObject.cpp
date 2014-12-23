@@ -2,7 +2,7 @@
 
 using namespace dx9lib;
 
-TerrainObject::TerrainObject(std::string shaderTech) : Object(shaderTech)
+TerrainObject::TerrainObject(std::string shader, std::string shaderTech) : Object(shader, shaderTech)
 {
 }
 

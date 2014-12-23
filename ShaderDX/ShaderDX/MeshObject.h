@@ -20,7 +20,7 @@ namespace dx9lib
 		// Constructor / Destructor
 		//////////////////////////////////////////
 		public:
-			MeshObject(mage::TString file, std::string shaderTech);
+			MeshObject(mage::TString file, std::string shader, std::string shaderTech);
 			~MeshObject();
 
 		//////////////////////////////////////////

@@ -3,7 +3,7 @@
 
 using namespace dx9lib;
 
-MeshObject::MeshObject(mage::TString file, std::string shaderTech) : Object(shaderTech)
+MeshObject::MeshObject(mage::TString file, std::string shader, std::string shaderTech) : Object(shader, shaderTech)
 {
 	this->file = file;
 	this->mesh = nullptr;
