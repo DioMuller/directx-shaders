@@ -13,6 +13,9 @@ namespace dx9lib
 			D3DXVECTOR3 position;
 			D3DXVECTOR3 target;
 			D3DXVECTOR3 up;
+			D3DXVECTOR3 original_position;
+			D3DXVECTOR3 original_target;
+			D3DXVECTOR3 original_up;
 			float fov;
 			float near_distance;
 			float far_distance;
@@ -45,6 +48,7 @@ namespace dx9lib
 			void setProjection(float fov, float near_distance, float far_distance);
 
 			void move(float x, float y, float z);
+			void reset();
 	};
 
 }

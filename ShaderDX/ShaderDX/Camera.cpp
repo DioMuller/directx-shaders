@@ -9,6 +9,11 @@ using namespace dx9lib;
 Camera::Camera(D3DXVECTOR3 position, D3DXVECTOR3 target, D3DXVECTOR3 up, float fov, float near_distance, float far_distance)
 {
 	changed = true;
+
+	original_position = position;
+	original_target = target;
+	original_up = up;
+
 	setPosition(position, target, up);
 	setProjection(fov, near_distance, far_distance);
 }
@@ -20,7 +25,14 @@ Camera::~Camera()
 
 bool Camera::process(float time)
 {
-	int x = 0, z = 0;
+	int x = 0, y = 0,  z = 0;
+
+	// Check for Reset
+	if (KeyboardInput::isPressed(Keys::SPACEBAR))
+	{
+		reset();
+		return true;
+	}
 
 	// X
 	if (KeyboardInput::isPressed(Keys::RIGHT) || KeyboardInput::isPressed(Keys::D))
@@ -30,6 +42,16 @@ bool Camera::process(float time)
 	if (KeyboardInput::isPressed(Keys::LEFT) || KeyboardInput::isPressed(Keys::A))
 	{
 		x -= 1;
+	}
+
+	// Y
+	if (KeyboardInput::isPressed(Keys::PGUP) || KeyboardInput::isPressed(Keys::R))
+	{
+		y += 1;
+	}
+	if (KeyboardInput::isPressed(Keys::PGDOWN) || KeyboardInput::isPressed(Keys::F))
+	{
+		y -= 1;
 	}
 
 	// Z
@@ -43,12 +65,13 @@ bool Camera::process(float time)
 	}
 
 	// Check Movement
-	if (x != 0 || z != 0)
+	if (x != 0 || y != 0 || z != 0)
 	{
 		float mx = (float) x * time * CAMERA_SPEED;
+		float my = (float) y * time * CAMERA_SPEED;
 		float mz = (float) z * time * CAMERA_SPEED;
 
-		move(mx, 0.0f, mz);
+		move(mx, my, mz);
 	}
 	
 	// Return!
@@ -106,6 +129,15 @@ void Camera::move(float x, float y, float z)
 	this->target.x += x;
 	this->target.y += y;
 	this->target.z += z;
+
+	changed = true;
+}
+
+void Camera::reset()
+{
+	this->position = original_position;
+	this->target = original_target;
+	this->up = original_up;
 
 	changed = true;
 }
