@@ -35,7 +35,7 @@ void MeshObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 		auto mat = materials[i]->material;
 		// Sets Material Properties.
 		shader->setColor("gAmbientMaterial", materials[i]->material.Ambient);
-		shader->setColor("gADiffuseMaterial", materials[i]->material.Diffuse);
+		shader->setColor("gDiffuseMaterial", materials[i]->material.Diffuse);
 		shader->setColor("gSpecularMaterial", materials[i]->material.Specular);
 		shader->setFloat("gSpecularPower", materials[i]->material.Power);
 
