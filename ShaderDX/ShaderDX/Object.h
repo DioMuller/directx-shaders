@@ -3,16 +3,19 @@
 #include <memory>
 #include "Mage/Effect.h"
 
+typedef D3DXVECTOR2 Vector2;
+typedef D3DXVECTOR3 Vector3;
+typedef D3DXVECTOR4 Vector4;
 
 namespace dx9lib
 {
 	// Position struct.
 	typedef struct sPosition
 	{
-		D3DXVECTOR3 position;
-		D3DXVECTOR3 rotation;
-		D3DXVECTOR3 scale;
-		D3DXVECTOR3 point_translation;
+		Vector3 position;
+		Vector3 rotation;
+		Vector3 scale;
+		Vector3 point_translation;
 	} Position;
 
 	class Object

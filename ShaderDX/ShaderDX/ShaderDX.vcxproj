@@ -96,7 +96,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="PostEffect.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="SkyboxObject.h" />
+    <ClInclude Include="SkydomeObject.h" />
     <ClInclude Include="TerrainObject.h" />
     <ClInclude Include="TinyXML2\tinyxml2.h" />
     <ClInclude Include="Vertex.h" />
@@ -114,13 +114,16 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PostEffect.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SkyboxObject.cpp" />
+    <ClCompile Include="SkydomeObject.cpp" />
     <ClCompile Include="TerrainObject.cpp" />
     <ClCompile Include="TinyXML2\tinyxml2.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="Content\Shaders\Object\SkyboxShader.fx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </FxCompile>
     <FxCompile Include="Content\Shaders\PostProcessing\CRT.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </FxCompile>
@@ -138,10 +141,16 @@
     <Image Include="Content\Textures\dbodybump.tga" />
     <Image Include="Content\Textures\dbodytt.tga" />
     <Image Include="Content\Textures\DwarfHead.dds" />
+    <Image Include="Content\Textures\grass.png" />
     <Image Include="Content\Textures\Headgear.dds" />
     <Image Include="Content\Textures\Helmet.dds" />
     <Image Include="Content\Textures\Pack.dds" />
+    <Image Include="Content\Textures\rock.png" />
+    <Image Include="Content\Textures\sand.png" />
     <Image Include="Content\Textures\ship1UV.bmp" />
+    <Image Include="Content\Textures\sky.png" />
+    <Image Include="Content\Textures\snow.png" />
+    <Image Include="Content\Textures\water.png" />
     <Image Include="Content\Textures\Weapons.dds" />
     <Image Include="Content\Textures\whitetex.dds" />
   </ItemGroup>

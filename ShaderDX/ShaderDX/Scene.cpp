@@ -3,6 +3,7 @@
 #include "TinyXML2/tinyxml2.h"
 
 #include "MeshObject.h"
+#include "SkydomeObject.h"
 
 using namespace dx9lib;
 
@@ -283,7 +284,7 @@ void Scene::loadFromFile(std::string path)
 				std::string name = nextObject->Name();
 				Object* object = nullptr;
 
-				// Load Model
+				#pragma region Load Model
 				if (name == "MeshObject")
 				{
 					std::string id = nextObject->Attribute("Id");
@@ -294,6 +295,18 @@ void Scene::loadFromFile(std::string path)
 					object = new MeshObject(model,shader, tech);
 				}
 
+				if (name == "SkydomeObject")
+				{
+					std::string id = nextObject->Attribute("Id");
+					std::string shader = nextObject->Attribute("Shader");
+					std::string texture = nextObject->Attribute("Texture");
+					std::string tech = nextObject->Attribute("Tech");
+
+					object = new SkydomeObject(texture, shader, tech);
+				}
+				#pragma endregion Load Model
+
+				#pragma region Transforms
 				// In-Object transformations, if the object was loaded.
 				if (object)
 				{
@@ -310,9 +323,9 @@ void Scene::loadFromFile(std::string path)
 							std::string type = transform->Attribute("Type");
 							
 							// Get Transform Value
-							float x = std::atof(transform->Attribute("X"));
-							float y = std::atof(transform->Attribute("Y"));
-							float z = std::atof(transform->Attribute("Z"));
+							float x = std::stof(transform->Attribute("X"));
+							float y = std::stof(transform->Attribute("Y"));
+							float z = std::stof(transform->Attribute("Z"));
 
 							// Executes transform
 							if (type == "Scale")
@@ -341,6 +354,7 @@ void Scene::loadFromFile(std::string path)
 					// Add Object to scene
 					objects.push_back(std::shared_ptr<Object>(object));
 				}
+				#pragma endregion Transforms
 
 				// Get next object
 				nextObject = nextObject->NextSiblingElement();

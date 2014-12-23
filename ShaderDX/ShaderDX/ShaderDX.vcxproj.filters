@@ -111,7 +111,7 @@
     <ClInclude Include="KeyboardInput.h">
       <Filter>DX9Lib\Input</Filter>
     </ClInclude>
-    <ClInclude Include="SkyboxObject.h">
+    <ClInclude Include="SkydomeObject.h">
       <Filter>DX9Lib\Objects</Filter>
     </ClInclude>
   </ItemGroup>
@@ -162,7 +162,7 @@
     <ClCompile Include="KeyboardInput.cpp">
       <Filter>DX9Lib\Input</Filter>
     </ClCompile>
-    <ClCompile Include="SkyboxObject.cpp">
+    <ClCompile Include="SkydomeObject.cpp">
       <Filter>DX9Lib\Objects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -203,6 +203,24 @@
     <Image Include="Content\Textures\ship1UV.bmp">
       <Filter>Content\Textures</Filter>
     </Image>
+    <Image Include="Content\Textures\grass.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\rock.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\sand.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\sky.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\snow.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\water.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Models\Dwarf.x">
@@ -240,6 +258,9 @@
       <Filter>Content\Shaders\PostProcessing</Filter>
     </FxCompile>
     <FxCompile Include="Content\Shaders\Object\PhongShader.fx">
+      <Filter>Content\Shaders\Object</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\Object\SkyboxShader.fx">
       <Filter>Content\Shaders\Object</Filter>
     </FxCompile>
   </ItemGroup>

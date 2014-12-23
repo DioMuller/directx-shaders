@@ -81,7 +81,14 @@ Effect& Effect::setVector(const std::string& name, const D3DXVECTOR2& vector)
 
 Effect& Effect::setColor(const std::string& name, const D3DXCOLOR& color)
 {
-	HR(shader->SetVector(shader->GetParameterByName(0, name.c_str()), &D3DXVECTOR4(color.r, color.g, color.b, color.a)));
+	auto result = shader->SetVector(shader->GetParameterByName(0, name.c_str()), &D3DXVECTOR4(color.r, color.g, color.b, color.a));
+
+	if (result != S_OK)
+	{
+		// Changed for debug reasons.
+		HR(result);
+	}
+
 	return *this;
 }
 
