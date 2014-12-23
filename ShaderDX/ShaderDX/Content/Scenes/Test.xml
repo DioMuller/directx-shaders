@@ -2,7 +2,7 @@
 <Scene>
   <!-- Shader File -->
   <Shader Type="Scene" File="PhongShader.fx"/>
-  <Shader Type="PostProcessing" Tech="CRTTech" File="CRT.fx"/>
+  <Shader Type="PostProcessing" Tech="PrewittTech" File="Masks.fx"/>
 
   <!-- Scene Camera -->
   <Camera Fov="60.0" Near="1.0" Far="5000.0">
