@@ -468,6 +468,12 @@
     <Xml Include="Content\Scenes\Default.xml">
       <Filter>Content\Scenes</Filter>
     </Xml>
+    <Xml Include="Content\Scenes\HyruleField - CRT.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\HyruleField - Pixelated.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Content\Shaders\PostProcessing\Masks.fx">
@@ -478,6 +484,9 @@
     </FxCompile>
     <FxCompile Include="Content\Shaders\Object\PhongShader.fx">
       <Filter>Content\Shaders\Object</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\PostProcessing\Pixelated.fx">
+      <Filter>Content\Shaders\PostProcessing</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

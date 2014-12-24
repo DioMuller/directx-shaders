@@ -132,6 +132,9 @@
     <FxCompile Include="Content\Shaders\Object\PhongShader.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </FxCompile>
+    <FxCompile Include="Content\Shaders\PostProcessing\Pixelated.fx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Content\Textures\10D69B79_c.bmp" />
@@ -231,11 +234,13 @@
     <None Include="Content\Models\vic viper.x" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Content\Scenes\HyruleField - CRT.xml" />
     <Xml Include="Content\Scenes\HyruleField - Laplace.xml" />
     <Xml Include="Content\Scenes\HyruleField - No Post Processing.xml" />
     <Xml Include="Content\Scenes\Default.xml">
       <DeploymentContent>false</DeploymentContent>
     </Xml>
+    <Xml Include="Content\Scenes\HyruleField - Pixelated.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
