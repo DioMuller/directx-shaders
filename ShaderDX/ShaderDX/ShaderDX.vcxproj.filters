@@ -49,7 +49,7 @@
     <Filter Include="Content\Shaders\Object">
       <UniqueIdentifier>{b3ca9484-b617-4350-890f-3cbb7c076f5a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DX9Lib\Helper">
+    <Filter Include="DX9Lib\Meshes">
       <UniqueIdentifier>{5af13744-fab1-4490-8d40-8c487905061c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -117,8 +117,14 @@
     <ClInclude Include="SkydomeObject.h">
       <Filter>DX9Lib\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Meshes.h">
+      <Filter>DX9Lib\Meshes</Filter>
+    </ClInclude>
     <ClInclude Include="SimpleMesh.h">
-      <Filter>DX9Lib\Helper</Filter>
+      <Filter>DX9Lib\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneObject.h">
+      <Filter>DX9Lib\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,8 +177,14 @@
     <ClCompile Include="SkydomeObject.cpp">
       <Filter>DX9Lib\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Meshes.cpp">
+      <Filter>DX9Lib\Meshes</Filter>
+    </ClCompile>
     <ClCompile Include="SimpleMesh.cpp">
-      <Filter>DX9Lib\Helper</Filter>
+      <Filter>DX9Lib\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneObject.cpp">
+      <Filter>DX9Lib\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

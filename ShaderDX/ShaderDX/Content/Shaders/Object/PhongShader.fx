@@ -37,7 +37,7 @@ uniform extern float gTimeElapsed;
 /////////////////////////////////////
 // Constants
 /////////////////////////////////////
-static const float cSkyboxSpeed = 0.1f;
+static const float cSkyboxSpeed = 0.01f;
 
 /////////////////////////////////////
 // Vertex Shader Output Struct

@@ -1,12 +1,12 @@
 #pragma once
-#include "Object.h"
+#include "PlaneObject.h"
 
 namespace dx9lib
 {
-	class TerrainObject : public Object
+	class TerrainObject : public PlaneObject
 	{
 		public:
-			TerrainObject(std::string shader, std::string shaderTech);
+			TerrainObject(std::string terrainFile, std::string textureFile, std::string shader, std::string shaderTech);
 			~TerrainObject();
 	};
 }

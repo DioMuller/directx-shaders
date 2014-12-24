@@ -1,5 +1,6 @@
 #include "SkydomeObject.h"
 #include "Vertex.h"
+#include "Meshes.h"
 
 #include "Mage/HandleError.h"
 
@@ -57,7 +58,7 @@ void SkydomeObject::loadGeometry(LPDIRECT3DDEVICE9 device)
 {
 	// Load Mesh
 	mesh = new SimpleMesh();
-	D3DLIB_BuildSphere(device, 100, 100, 100.0f, mesh);
+	DX9LIB_BuildSphere(device, 100, 100, 100.0f, mesh);
 
 	// Load Texture
 	this->material = std::shared_ptr<Material>(new Material());

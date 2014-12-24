@@ -13,6 +13,8 @@ namespace dx9lib
 			LPDIRECT3DINDEXBUFFER9 indexBuffer;
 			int vertices;
 			int indexes;
+			int triangles;
+			bool useTriangleStrip;
 		public:
 			SimpleMesh();
 			~SimpleMesh();
@@ -22,4 +24,3 @@ namespace dx9lib
 	};
 }
 
-HRESULT D3DLIB_BuildSphere(IDirect3DDevice9* device, int slices, int stacks, float radius, dx9lib::SimpleMesh* mesh);
