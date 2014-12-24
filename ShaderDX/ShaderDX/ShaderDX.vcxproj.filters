@@ -242,6 +242,213 @@
     <Image Include="Content\Textures\water.png">
       <Filter>Content\Textures</Filter>
     </Image>
+    <Image Include="Content\Textures\1BC4DCE4_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\1BC4DCE4_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\1EEE750F_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\2D5D1B8F_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\2D5D1B8F_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\2DAF96AE_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\3C7A0C22_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\3C7695F0_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\3C7695F0_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\4BA7F79_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\4BA7F79_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\4C9D67D9_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\4F9F4337_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\4F9F4337_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\5A4D99BD_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\5D246C08_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\5D246C08_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\5FD17CC8_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\6D92D9A3_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\6D92D9A3_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\6E951A98_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\6E951A98_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\6EC1628E_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\6EC1628E_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\7B04F5EE_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\7CE8BE8_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\7F746AD1_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\7F746AD1_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\10D69B79_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\10EF1FD4_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\10EF1FD4_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\17F43283_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\22A2163B_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\22A2163B_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\25E8E1F4_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\25E8E1F4_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\28DD4D2_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\28DD4D2_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\37BEB5A4_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\42C6B59D_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\42C6B59D_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\44BBA858_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\54A04A95_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\54A04A95_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\64A664D_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\65BD1672_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\65BD1672_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\75FA333A_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\190B8B20_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\213F78BF_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\213F78BF_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\245C40BD_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\467E67FD_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\514C13D3_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\527B3CF9_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\527B3CF9_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\766BA1C_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\766BA1C_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\53350B80_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\76118EE5_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\38023977_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\38023977_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\AF79BFC_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\BC144FF_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\CC5EDAA_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\CC5EDAA_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\D3B2755_a.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\D3B2755_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\F09CE01_c.bmp">
+      <Filter>Content\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Models\Dwarf.x">
@@ -259,9 +466,18 @@
     <None Include="Content\Models\vic viper.x">
       <Filter>Content\Models</Filter>
     </None>
+    <None Include="Content\Models\hyrulefeild.x">
+      <Filter>Content\Models</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Content\Scenes\Test.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\HyruleField - Laplace.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\HyruleField - No Post Processing.xml">
       <Filter>Content\Scenes</Filter>
     </Xml>
   </ItemGroup>
