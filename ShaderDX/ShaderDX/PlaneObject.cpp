@@ -54,6 +54,8 @@ bool PlaneObject::process(float time)
 // Loads plane geometry.
 void PlaneObject::loadGeometry(LPDIRECT3DDEVICE9 device)
 {
+	mesh = new SimpleMesh();
+
 	std::vector<DWORD> indexes;
 
 	// Distance difference between each vertex (x and Z)

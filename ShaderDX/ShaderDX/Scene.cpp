@@ -4,6 +4,7 @@
 
 #include "MeshObject.h"
 #include "SkydomeObject.h"
+#include "PlaneObject.h"
 
 using namespace dx9lib;
 
@@ -303,6 +304,20 @@ void Scene::loadFromFile(std::string path)
 					std::string tech = nextObject->Attribute("Tech");
 
 					object = new SkydomeObject(texture, shader, tech);
+				}
+
+				if (name == "PlaneObject")
+				{
+					std::string id = nextObject->Attribute("Id");
+					std::string shader = nextObject->Attribute("Shader");
+					std::string texture = nextObject->Attribute("Texture");
+					std::string tech = nextObject->Attribute("Tech");
+					float width = std::stof(nextObject->Attribute("Width"));
+					float depth = std::stof(nextObject->Attribute("Depth"));
+					int columns = std::stoi(nextObject->Attribute("Columns"));
+					int rows = std::stoi(nextObject->Attribute("Rows"));
+
+					object = new PlaneObject(width, depth, columns, rows, texture, shader, tech);
 				}
 				#pragma endregion Load Model
 
