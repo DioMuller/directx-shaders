@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene>
   <!-- Shader Files -->
-  <Shader Id="Phong" Type="Object" File="PhongShader.fx"/>
-  <Shader Id="Skydome" Type="Object" File="SkyboxShader.fx"/>
+  <Shader Id="Phong" Type="Object" File="PhongShader.fx"/>  
   <!--<Shader Id="PostProcessing" Type="PostProcessing" Tech="PrewittTech" File="Masks.fx"/>-->
 
   <!-- Scene Camera -->
@@ -20,11 +19,10 @@
   </Light>
   <Objects>
 	<!-- Skydome -->
-	<SkydomeObject Id="Skydome" Texture="sky.png" Shader="Skydome" Tech="SkydomeTech">
-		<Transforms>
-			<Transform Type="Position" X="-1.0" Y ="0" Z="0"/>
-			<Transform Type="Scale" X="1.5" Y="1.5" Z="1.5"/>
-		</Transforms>
+	<SkydomeObject Id="Skydome" Texture="sky.png" Shader="Phong" Tech="SkydomeTech">
+	  <Transforms>
+        <Transform Type="Rotation" X="0.0" Y ="0.0" Z="90."/>
+      </Transforms>
 	</SkydomeObject>
     <!-- Dinossaur -->
     <MeshObject Id="Dino" Model="dino videogame.x" Shader="Phong" Tech="PhongTech">

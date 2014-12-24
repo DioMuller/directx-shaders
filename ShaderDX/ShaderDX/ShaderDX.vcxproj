@@ -96,6 +96,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="PostEffect.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SimpleMesh.h" />
     <ClInclude Include="SkydomeObject.h" />
     <ClInclude Include="TerrainObject.h" />
     <ClInclude Include="TinyXML2\tinyxml2.h" />
@@ -114,6 +115,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PostEffect.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SimpleMesh.cpp" />
     <ClCompile Include="SkydomeObject.cpp" />
     <ClCompile Include="TerrainObject.cpp" />
     <ClCompile Include="TinyXML2\tinyxml2.cpp" />
@@ -121,9 +123,6 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Content\Shaders\Object\SkyboxShader.fx">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </FxCompile>
     <FxCompile Include="Content\Shaders\PostProcessing\CRT.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </FxCompile>

@@ -49,6 +49,9 @@
     <Filter Include="Content\Shaders\Object">
       <UniqueIdentifier>{b3ca9484-b617-4350-890f-3cbb7c076f5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DX9Lib\Helper">
+      <UniqueIdentifier>{5af13744-fab1-4490-8d40-8c487905061c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mage\AbstractGameLoop.h">
@@ -114,6 +117,9 @@
     <ClInclude Include="SkydomeObject.h">
       <Filter>DX9Lib\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="SimpleMesh.h">
+      <Filter>DX9Lib\Helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp">
@@ -164,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="SkydomeObject.cpp">
       <Filter>DX9Lib\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleMesh.cpp">
+      <Filter>DX9Lib\Helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,9 +267,6 @@
       <Filter>Content\Shaders\PostProcessing</Filter>
     </FxCompile>
     <FxCompile Include="Content\Shaders\Object\PhongShader.fx">
-      <Filter>Content\Shaders\Object</Filter>
-    </FxCompile>
-    <FxCompile Include="Content\Shaders\Object\SkyboxShader.fx">
       <Filter>Content\Shaders\Object</Filter>
     </FxCompile>
   </ItemGroup>

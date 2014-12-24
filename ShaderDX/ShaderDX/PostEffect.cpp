@@ -60,7 +60,7 @@ void PostEffect::begin(IDirect3DDevice9* device)
 
 void PostEffect::process(IDirect3DDevice9* device)
 {
-	device->EndScene();
+	//device->EndScene();
 
 	if (defaultTarget) {
 		HR(device->SetRenderTarget(0, defaultTarget));

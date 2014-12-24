@@ -19,6 +19,9 @@ SkydomeObject::~SkydomeObject()
 // Paints the scene on each loop.
 void SkydomeObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 {
+	DWORD original;
+	device->GetRenderState(D3DRS_CULLMODE, &original);
+	device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 	if (!isLoaded)
 	{
 		loadGeometry(device);
@@ -35,8 +38,9 @@ void SkydomeObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 
 	shader->execute([this](LPDIRECT3DDEVICE9 device)
 	{
-		HR(mesh->DrawSubset(0));
+		mesh->Draw(device);
 	});
+	device->SetRenderState(D3DRS_CULLMODE, original);
 }
 
 // Process whatever should be executed every turn.
@@ -48,23 +52,11 @@ bool SkydomeObject::process(float time)
 // Loads skybox geometry.
 void SkydomeObject::loadGeometry(LPDIRECT3DDEVICE9 device)
 {
-	// Step 1. Load Sphere on Memory.
-	ID3DXMesh* sphereMesh;
+	// Load Mesh
+	mesh = new SimpleMesh();
+	D3DLIB_BuildSphere(device, 100, 100, 100.0f, mesh);
 
-	D3DXCreateSphere(device, 1.0f, 20, 20, &sphereMesh, NULL);
-
-	// Step 2. Convert to our vertex format.
-	D3DVERTEXELEMENT9 elements[65];
-	UINT numElements = 0;
-	Vertex::getDeclaration(device)->GetDeclaration(elements, &numElements);
-
-	ID3DXMesh* temp = nullptr;
-	HR(sphereMesh->CloneMesh(D3DXMESH_SYSTEMMEM, elements, device, &temp));
-
-	sphereMesh->Release();
-	this->mesh = temp;
-
-	// Step 3. Load Texture.
+	// Load Texture
 	this->material = std::shared_ptr<Material>(new Material());
 
 	IDirect3DTexture9* tex = nullptr;

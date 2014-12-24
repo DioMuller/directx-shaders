@@ -32,6 +32,8 @@ struct OutputVS
 {
 	float4 posH : POSITION0;
 	float2 tex0 : TEXCOORD0;
+	float3 N : TEXCOORD1;
+	float3 V : TEXCOORD2;
 };
 
 // Texture Sampler
@@ -54,9 +56,12 @@ OutputVS TransformVS(float3 posL : POSITION0, float3 normal : NORMAL0, float2 te
 
 	// Transforms scene.
 	float4 posW = mul(float4(posL, 1.0f), gWorld);
-	float4 posWV = mul(posW, gView);
-	float4 posWVP = mul(posWV, gProjection);
-	outVS.posH = posWVP;
+		float4 posWV = mul(posW, gView);
+		float4 posWVP = mul(posWV, gProjection);
+		outVS.posH = posWVP;
+
+	outVS.N = mul(float4(normal, 0), gWorld).xyz;
+	outVS.V = (gCameraPos - posW).xyz;
 
 	// Passes the texture to rastering.
 	outVS.tex0 = tex0;
@@ -64,9 +69,28 @@ OutputVS TransformVS(float3 posL : POSITION0, float3 normal : NORMAL0, float2 te
 }
 
 // Pixel Shader
-float4 TransformPS(float3 tex0 : TEXCOORD0) : COLOR
+float4 TransformPS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOORD2) : COLOR
 {
-	return float4(1.0, 0.0, 0.0, 1.0);//tex2D(TextureSampler, tex0);
+	// Normalize Normal and To Camera vectors.
+	float3 normal = normalize(N);
+	float3 toCamera = normalize(V);
+
+	// Calculates the Ambient light component.
+	float3 ambient = (gAmbientColor * gAmbientMaterial).rgb;
+
+	// Calculates the diffuse light component.
+	float3 lightDir = gLightDir.xyz;
+	float diffuseIntensity = max(dot(-lightDir, normal), 0.0f);
+	float3 diffuse = (gDiffuseColor * gDiffuseMaterial * diffuseIntensity).rgb;
+
+		// Calculates the Specular light component.
+		float3 reflex = reflect(lightDir, normal);
+		float specularIntensity = pow(saturate(dot(reflex, toCamera)), gSpecularPower);
+	float3 specular = (gSpecularColor * gSpecularMaterial * specularIntensity).rgb;
+
+		// Adds the lights
+		float3 lighting = (ambient.rgb + diffuse.rgb) * tex2D(TextureSampler, tex0).rgb;
+		return saturate(float4(lighting + specular.rgb, gAmbientMaterial.a));
 }
 
 technique SkydomeTech

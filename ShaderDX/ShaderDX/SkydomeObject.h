@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "Material.h"
+#include "SimpleMesh.h"
 
 namespace dx9lib
 {
@@ -13,7 +14,7 @@ namespace dx9lib
 			std::shared_ptr<Material> material;
 			std::string textureFile;
 			bool isLoaded;
-			ID3DXMesh* mesh;
+			SimpleMesh* mesh;
 
 		//////////////////////////////////////////
 		// Constructor / Destructor

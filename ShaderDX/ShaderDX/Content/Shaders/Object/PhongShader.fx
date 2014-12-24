@@ -2,6 +2,10 @@
 // Phong shading
 //==================================================================
 
+/////////////////////////////////////
+// Externs
+/////////////////////////////////////
+
 // Transform Parameters
 uniform extern float4x4 gWorld;
 uniform extern float4x4 gView;
@@ -27,7 +31,13 @@ uniform extern float4 gCameraPos;
 // Texture
 uniform extern texture gTexture;
 
+/////////////////////////////////////
+// Constants
+/////////////////////////////////////
+
+/////////////////////////////////////
 // Vertex Shader Output Struct
+/////////////////////////////////////
 struct OutputVS
 {
 	float4 posH : POSITION0;
@@ -36,8 +46,10 @@ struct OutputVS
 	float3 V : TEXCOORD2;
 };
 
+/////////////////////////////////////
 // Texture Sampler
-sampler TesS = sampler_state
+/////////////////////////////////////
+sampler TextureSampler = sampler_state
 {
 	Texture = <gTexture>;
 	MinFilter = Anisotropic;
@@ -48,7 +60,9 @@ sampler TesS = sampler_state
 	AddressV = WRAP;
 };
 
+/////////////////////////////////////
 // Vertex Shader
+/////////////////////////////////////
 OutputVS TransformVS(float3 posL : POSITION0, float3 normal : NORMAL0, float2 tex0 : TEXCOORD0)
 {
 	// Initializes structure.
@@ -68,8 +82,10 @@ OutputVS TransformVS(float3 posL : POSITION0, float3 normal : NORMAL0, float2 te
 	return outVS;
 }
 
+/////////////////////////////////////
 // Pixel Shader
-float4 TransformPS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOORD2) : COLOR
+/////////////////////////////////////
+float4 PhongPS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOORD2) : COLOR
 {
 	// Normalize Normal and To Camera vectors.
 	float3 normal = normalize(N);
@@ -89,17 +105,38 @@ float4 TransformPS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEX
 	float3 specular = (gSpecularColor * gSpecularMaterial * specularIntensity).rgb;
 
 	// Adds the lights
-	float3 lighting = (ambient.rgb + diffuse.rgb) * tex2D(TesS, tex0).rgb;
+	float3 lighting = (ambient.rgb + diffuse.rgb) * tex2D(TextureSampler, tex0).rgb;
 	return saturate(float4(lighting + specular.rgb, gAmbientMaterial.a));
 }
 
+float4 SkydomePS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOORD2) : COLOR
+{
+	return tex2D(TextureSampler, tex0);
+}
+
+/////////////////////////////////////
+// Techniques
+/////////////////////////////////////
 technique PhongTech
 {
 	pass P0
 	{
 		// Vertex and Pixel Shader associated with this pass.            
 		vertexShader = compile vs_2_0 TransformVS();
-		pixelShader = compile ps_2_0 TransformPS();
+		pixelShader = compile ps_2_0 PhongPS();
+
+		//Device State
+		FillMode = Solid;
+	}
+}
+
+technique SkydomeTech
+{
+	pass P0
+	{
+		// Vertex and Pixel Shader associated with this pass.            
+		vertexShader = compile vs_2_0 TransformVS();
+		pixelShader = compile ps_2_0 SkydomePS();
 
 		//Device State
 		FillMode = Solid;
