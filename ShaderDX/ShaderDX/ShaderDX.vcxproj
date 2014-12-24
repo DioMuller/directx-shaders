@@ -158,12 +158,8 @@
     <Image Include="Content\Textures\whitetex.dds" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Models\Boo.x" />
     <None Include="Content\Models\dino videogame.x" />
     <None Include="Content\Models\Dwarf.x" />
-    <None Include="Content\Models\King Boo.x">
-      <DeploymentContent>false</DeploymentContent>
-    </None>
     <None Include="Content\Models\ship1.x" />
     <None Include="Content\Models\skullocc.x" />
     <None Include="Content\Models\vic viper.x" />

@@ -2,7 +2,7 @@
 <Scene>
 	<!-- Shader Files -->
 	<Shader Id="Phong" Type="Object" File="PhongShader.fx"/>  
-	<!--<Shader Id="PostProcessing" Type="PostProcessing" Tech="PrewittTech" File="Masks.fx"/>-->
+	<Shader Id="PostProcessing" Type="PostProcessing" Tech="LaplaceTech" File="Masks.fx"/>
 
 	<!-- Scene Camera -->
 	<Camera Fov="60.0" Near="1.0" Far="5000.0">
@@ -38,7 +38,14 @@
 				<Transform Type="Rotation" X="0.0" Y ="90.0" Z="0.0"/>
 			</Transforms>
 		</MeshObject>
+		<!-- Starship -->
+		<MeshObject Id="Starship" Model="vic viper.x" Shader="Phong" Tech="PhongTech">
+			<Transforms>
+				<Transform Type="Position" X="5.0" Y ="10.0" Z="20"/>
+				<Transform Type="Scale" X="2" Y="2" Z="2"/>
+			</Transforms>
+		</MeshObject>
 		<!-- Ground -->
-		<!--<PlaneObject Id="Ground" Width="100.0" Depth="100.0" Columns="100" Rows="100" Texture="grass.png" Shader="Phong" Tech="PhongTech"/>-->
+		<PlaneObject Id="Ground" Width="100.0" Depth="100.0" Columns="100" Rows="100" Texture="grass.png" Shader="Phong" Tech="SkydomeTech"/>
 	</Objects>
 </Scene>
