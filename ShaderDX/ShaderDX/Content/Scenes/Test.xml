@@ -2,7 +2,7 @@
 <Scene>
   <!-- Shader Files -->
   <Shader Id="Phong" Type="Object" File="PhongShader.fx"/>  
-  <!--<Shader Id="PostProcessing" Type="PostProcessing" Tech="PrewittTech" File="Masks.fx"/>-->
+  <Shader Id="PostProcessing" Type="PostProcessing" Tech="PrewittTech" File="Masks.fx"/>
 
   <!-- Scene Camera -->
   <Camera Fov="60.0" Near="1.0" Far="5000.0">
@@ -21,7 +21,7 @@
 	<!-- Skydome -->
 	<SkydomeObject Id="Skydome" Texture="sky.png" Shader="Phong" Tech="SkydomeTech">
 	  <Transforms>
-        <Transform Type="Rotation" X="0.0" Y ="0.0" Z="90."/>
+        <Transform Type="Rotation" X="90.0" Y ="0.0" Z="0.0"/>
       </Transforms>
 	</SkydomeObject>
     <!-- Dinossaur -->

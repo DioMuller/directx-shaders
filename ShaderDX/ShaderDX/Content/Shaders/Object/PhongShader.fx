@@ -31,9 +31,13 @@ uniform extern float4 gCameraPos;
 // Texture
 uniform extern texture gTexture;
 
+// Time
+uniform extern float gTimeElapsed;
+
 /////////////////////////////////////
 // Constants
 /////////////////////////////////////
+static const float cSkyboxSpeed = 0.1f;
 
 /////////////////////////////////////
 // Vertex Shader Output Struct
@@ -85,7 +89,7 @@ OutputVS TransformVS(float3 posL : POSITION0, float3 normal : NORMAL0, float2 te
 /////////////////////////////////////
 // Pixel Shader
 /////////////////////////////////////
-float4 PhongPS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOORD2) : COLOR
+float4 PhongPS(float2 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOORD2) : COLOR
 {
 	// Normalize Normal and To Camera vectors.
 	float3 normal = normalize(N);
@@ -109,9 +113,9 @@ float4 PhongPS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOOR
 	return saturate(float4(lighting + specular.rgb, gAmbientMaterial.a));
 }
 
-float4 SkydomePS(float3 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOORD2) : COLOR
+float4 SkydomePS(float2 tex0 : TEXCOORD0, float3 N : TEXCOORD1, float3 V : TEXCOORD2) : COLOR
 {
-	return tex2D(TextureSampler, tex0);
+	return tex2D(TextureSampler, float2(tex0.x + gTimeElapsed * cSkyboxSpeed, tex0.y));
 }
 
 /////////////////////////////////////

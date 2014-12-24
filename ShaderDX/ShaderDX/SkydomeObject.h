@@ -14,6 +14,7 @@ namespace dx9lib
 			std::shared_ptr<Material> material;
 			std::string textureFile;
 			bool isLoaded;
+			float timeElapsed;
 			SimpleMesh* mesh;
 
 		//////////////////////////////////////////

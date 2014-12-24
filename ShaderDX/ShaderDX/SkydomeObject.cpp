@@ -8,6 +8,7 @@ using namespace dx9lib;
 SkydomeObject::SkydomeObject(std::string texture, std::string shader, std::string shaderTech) : Object(shader, shaderTech)
 {
 	this->isLoaded = false;
+	this->timeElapsed = 0.0f;
 	this->textureFile = texture;
 }
 
@@ -33,6 +34,7 @@ void SkydomeObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 	// If it has texture, use it. Else, use the default texture.
 	auto tex = material->texture ? material->texture : Material::GetEmptyTexture(device);
 	shader->setTexture("gTexture", tex);
+	shader->setFloat("gTimeElapsed", timeElapsed);
 
 	shader->commit();
 
@@ -46,6 +48,7 @@ void SkydomeObject::paint(IDirect3DDevice9* device, mage::Effect* shader)
 // Process whatever should be executed every turn.
 bool SkydomeObject::process(float time)
 {
+	timeElapsed += time;
 	return Object::process(time);
 }
 
