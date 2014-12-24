@@ -105,9 +105,6 @@
     <ClInclude Include="Scene.h">
       <Filter>DX9Lib\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="TerrainObject.h">
-      <Filter>DX9Lib\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="PostEffect.h">
       <Filter>DX9Lib\Rendering</Filter>
     </ClInclude>
@@ -122,9 +119,6 @@
     </ClInclude>
     <ClInclude Include="SimpleMesh.h">
       <Filter>DX9Lib\Meshes</Filter>
-    </ClInclude>
-    <ClInclude Include="PlaneObject.h">
-      <Filter>DX9Lib\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +159,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>DX9Lib\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="TerrainObject.cpp">
-      <Filter>DX9Lib\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="PostEffect.cpp">
       <Filter>DX9Lib\Rendering</Filter>
     </ClCompile>
@@ -182,9 +173,6 @@
     </ClCompile>
     <ClCompile Include="SimpleMesh.cpp">
       <Filter>DX9Lib\Meshes</Filter>
-    </ClCompile>
-    <ClCompile Include="PlaneObject.cpp">
-      <Filter>DX9Lib\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

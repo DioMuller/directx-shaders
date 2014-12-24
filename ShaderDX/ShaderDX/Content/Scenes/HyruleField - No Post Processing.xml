@@ -52,8 +52,5 @@
 				<Transform Type="Rotation" X="-90.0" Y ="-45.0" Z="0.0"/>
 			</Transforms>
 		</MeshObject>
-		<!-- Ground -->
-		<PlaneObject Id="Ground" Width="100.0" Depth="100.0" Columns="100" Rows="100" Texture="grass.png" Shader="Phong" Tech="SkydomeTech">
-		</PlaneObject>
 	</Objects>
 </Scene>

@@ -95,12 +95,10 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="MeshObject.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="PlaneObject.h" />
     <ClInclude Include="PostEffect.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SimpleMesh.h" />
     <ClInclude Include="SkydomeObject.h" />
-    <ClInclude Include="TerrainObject.h" />
     <ClInclude Include="TinyXML2\tinyxml2.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
@@ -115,13 +113,11 @@
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MeshObject.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="PlaneObject.cpp" />
     <ClCompile Include="PostEffect.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SimpleMesh.cpp" />
     <ClCompile Include="SkydomeObject.cpp" />
     <ClCompile Include="Meshes.cpp" />
-    <ClCompile Include="TerrainObject.cpp" />
     <ClCompile Include="TinyXML2\tinyxml2.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />
