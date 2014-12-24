@@ -8,7 +8,7 @@ void MainGame::setup(IDirect3DDevice9* device)
 {
 	running = true;
 
-	scene.loadFromFile(Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Test.xml")));
+	scene.loadFromFile(Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Default.xml")));
 	scene.initialize(device);
 }
 

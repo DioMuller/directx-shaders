@@ -15,6 +15,8 @@ uniform extern float2 gScreenSize;
 /////////////////////////////////////
 static const float cMul1 = 0.51;
 static const float cMul2 = 0.255;
+static const float cContrast = 2.1;
+static const float cBrightness = 40.0;
 
 /////////////////////////////////////
 // Vertex Shader Output Struct
@@ -58,9 +60,8 @@ float4 CRTPS(float2 tex0 : TEXCOORD0) : COLOR
 {
 	float4 color = tex2D(gTextureSampler, tex0);
 	float2 screenPosition = tex0 * gScreenSize;
-	float pixel = screenPosition.x % 3;
 
-	int pos = trunc(pixel) % 3;
+	int pos = round(screenPosition.x) % 3;
 	float4 mask = float4(0.0, 0.0, 0.0, 1.0);
 
 	if (pos == 1)
@@ -81,10 +82,18 @@ float4 CRTPS(float2 tex0 : TEXCOORD0) : COLOR
 		mask.g = cMul2;
 		mask.b = 1;
 	}
+	
+	color += (cBrightness / 255.0);
+	color = color - cContrast * (color - 1.0) * color * (color - 0.5);
 
-	float4 result = color * mask;
+	if (round(screenPosition.y) % 2 == 0)
+	{
+		mask *= 0.5;
+	}
 
-	return result;
+	color = color * mask;
+
+	return color;
 }
 
 /////////////////////////////////////

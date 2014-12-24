@@ -233,7 +233,7 @@
   <ItemGroup>
     <Xml Include="Content\Scenes\HyruleField - Laplace.xml" />
     <Xml Include="Content\Scenes\HyruleField - No Post Processing.xml" />
-    <Xml Include="Content\Scenes\Test.xml">
+    <Xml Include="Content\Scenes\Default.xml">
       <DeploymentContent>false</DeploymentContent>
     </Xml>
   </ItemGroup>

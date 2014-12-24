@@ -459,13 +459,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Content\Scenes\Test.xml">
-      <Filter>Content\Scenes</Filter>
-    </Xml>
     <Xml Include="Content\Scenes\HyruleField - Laplace.xml">
       <Filter>Content\Scenes</Filter>
     </Xml>
     <Xml Include="Content\Scenes\HyruleField - No Post Processing.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\Default.xml">
       <Filter>Content\Scenes</Filter>
     </Xml>
   </ItemGroup>
