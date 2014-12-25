@@ -3,22 +3,12 @@
 
 using namespace dx9lib;
 
-MainGame::MainGame()
-{
-	this->sceneFile = Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Default.xml"));
-}
-
-MainGame::MainGame(std::string sceneFile)
-{
-	this->sceneFile = sceneFile;
-}
-
 // Setups the scene.
 void MainGame::setup(IDirect3DDevice9* device)
 {
 	running = true;
 	scene = new Scene();
-	scene->loadFromFile(this->sceneFile);
+	scene->loadFromFile(Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Default.xml")));
 	scene->initialize(device);
 }
 

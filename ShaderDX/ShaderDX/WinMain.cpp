@@ -9,24 +9,14 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, int nShowCmd)
 {
-	// Gets Command Line
-	std::string cmdLine = std::string(pCmdLine);
-
 	// Gets the window subsystem.
 	mage::GameWindow& window = mage::GameWindow::get();
 
 	// Tries initialization.
 	if (window.setup(hInstance, nShowCmd, _T(WINDOW_TITLE), WINDOW_POS_X, WINDOW_POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT))
 	{
-		if (cmdLine.length() > 0)
-		{
-			window.run(new MainGame(cmdLine));
-		}
-		else
-		{
-			// If initialization was correct, run the game loop.
-			window.run(new MainGame());
-		}
+		// If initialization was correct, run the game loop.
+		window.run(new MainGame());
 	}
 
 	// Finalizes the system.

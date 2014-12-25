@@ -18,11 +18,6 @@ class MainGame : public mage::AbstractGameLoop
 		dx9lib::Scene* scene;
 		bool openDialog = false;
 		bool dialogOpen = false;
-		std::string sceneFile;
-
-	public:
-		MainGame();
-		MainGame(std::string scene);
 
 	//////////////////////////////////////////
 	// AbstractGameLoop Methods
