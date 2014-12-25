@@ -14,7 +14,7 @@ void TextRenderer::initialize(IDirect3DDevice9* device)
 	D3DXCreateFont(device,    // the D3D Device
 		20,    // font height
 		0,    // default font width
-		FW_NORMAL,    // font weight
+		FW_ULTRABOLD,    // font weight
 		1,    // not using MipLevels
 		false,    // italic font
 		DEFAULT_CHARSET,    // default character set
