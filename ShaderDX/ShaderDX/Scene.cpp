@@ -52,6 +52,8 @@ void Scene::initialize(IDirect3DDevice9* device)
 		postProcessing->initialize(device);
 	}
 
+	gui.initialize(device);
+
 	initialized = true;
 }
 
@@ -107,11 +109,13 @@ void Scene::paint(IDirect3DDevice9* device)
 	{
 		postProcessing->process(device);
 	}
-	else
-	{
-		// Ends drawing the scene.
-		HR(device->EndScene());
-	}
+
+	gui.drawText(device, "WASD or Arrows to Move.", 5, 5, TEXT_COLOR);
+	gui.drawText(device, "R/F or PgUp/PgDown to go Up/Down.", 5, 25, TEXT_COLOR);
+	gui.drawText(device, "F2 to load another scene.", 5, 45, TEXT_COLOR);
+
+	// Ends drawing the scene.
+	HR(device->EndScene());
 
 	// Presents scene / switches buffer.
 	HR(device->Present(NULL, NULL, NULL, NULL));

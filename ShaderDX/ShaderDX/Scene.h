@@ -8,8 +8,10 @@
 #include "Camera.h"
 #include "Light.h"
 #include "PostEffect.h"
+#include "TextRenderer.h"
 
 #define CLEAR_COLOR D3DCOLOR_XRGB(154, 206, 235)
+#define TEXT_COLOR D3DCOLOR_XRGB(206, 206, 20)
 
 namespace dx9lib
 {
@@ -24,6 +26,7 @@ namespace dx9lib
 			std::vector<std::shared_ptr<Object>> objects;
 			std::shared_ptr<Camera> camera;
 			std::shared_ptr<Light> light;
+			TextRenderer gui;
 			bool initialized;
 
 		//////////////////////////////////////////

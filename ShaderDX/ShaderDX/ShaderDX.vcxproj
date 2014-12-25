@@ -99,6 +99,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SimpleMesh.h" />
     <ClInclude Include="SkydomeObject.h" />
+    <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="TinyXML2\tinyxml2.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
@@ -118,6 +119,7 @@
     <ClCompile Include="SimpleMesh.cpp" />
     <ClCompile Include="SkydomeObject.cpp" />
     <ClCompile Include="Meshes.cpp" />
+    <ClCompile Include="TextRenderer.cpp" />
     <ClCompile Include="TinyXML2\tinyxml2.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />

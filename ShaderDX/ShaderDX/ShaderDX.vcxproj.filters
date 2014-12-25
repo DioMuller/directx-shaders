@@ -120,6 +120,9 @@
     <ClInclude Include="SimpleMesh.h">
       <Filter>DX9Lib\Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="TextRenderer.h">
+      <Filter>DX9Lib\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mage\Effect.cpp">
@@ -173,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="SimpleMesh.cpp">
       <Filter>DX9Lib\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="TextRenderer.cpp">
+      <Filter>DX9Lib\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

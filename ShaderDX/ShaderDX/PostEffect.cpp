@@ -60,7 +60,7 @@ void PostEffect::begin(IDirect3DDevice9* device)
 
 void PostEffect::process(IDirect3DDevice9* device)
 {
-	//device->EndScene();
+	device->EndScene();
 
 	if (defaultTarget) {
 		HR(device->SetRenderTarget(0, defaultTarget));
@@ -81,9 +81,6 @@ void PostEffect::process(IDirect3DDevice9* device)
 		HR(device->SetStreamSource(0, vertexBuffer, 0, sizeof(Vertex)));
 		HR(device->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2));
 	});
-
-	device->EndScene();
-
 }
 
 void PostEffect::end(IDirect3DDevice9* device)
