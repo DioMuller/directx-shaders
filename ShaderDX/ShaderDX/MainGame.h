@@ -15,7 +15,8 @@ class MainGame : public mage::AbstractGameLoop
 	// Attributes
 	//////////////////////////////////////////
 	private:
-		dx9lib::Scene scene;
+		dx9lib::Scene* scene;
+		bool dialogOpen = false;
 
 	//////////////////////////////////////////
 	// AbstractGameLoop Methods
@@ -31,5 +32,7 @@ class MainGame : public mage::AbstractGameLoop
 		virtual void shutDown(IDirect3DDevice9* device);
 		// Executed when an windows event is triggered.
 		virtual void processEvent(const mage::WindowsEvent& evt);
+		// Shows load scene dialog.
+		void loadSceneDialog();
 };
 

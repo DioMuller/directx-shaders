@@ -17,6 +17,7 @@ Scene::Scene()
 {
 	objectShaders = std::map<std::string, mage::Effect*>();
 	postProcessing = nullptr;
+	initialized = false;
 }
 
 
@@ -25,8 +26,8 @@ Scene::~Scene()
 	while (!objectShaders.empty())
 	{
 		auto it = objectShaders.begin();
-		objectShaders.erase(it->first);
 		delete it->second;
+		objectShaders.erase(it->first);		
 	}
 }
 
@@ -50,11 +51,14 @@ void Scene::initialize(IDirect3DDevice9* device)
 	{
 		postProcessing->initialize(device);
 	}
+
+	initialized = true;
 }
 
 // Process whatever should be executed every turn.
 bool Scene::process(float time)
 {
+	if ( !initialized ) return false;
 	// Process Camera and Lights
 	camera->process(time);
 	light->process(time);
@@ -71,6 +75,11 @@ bool Scene::process(float time)
 // Paints the scene on each loop.
 void Scene::paint(IDirect3DDevice9* device)
 {
+	if (!initialized)
+	{
+		initialize(device);
+	}
+
 	if (postProcessing)
 	{
 		postProcessing->begin(device);
@@ -156,7 +165,8 @@ void Scene::loadFromFile(std::string path)
 			
 			if (shaderType == SHADER_OBJECT)
 			{
-				objectShaders[shaderId] = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
+				auto shader = new mage::Effect(Content::GetContentItemPath(Content::SHADERS, shaderPath));
+				objectShaders[shaderId] = shader;
 			}
 			else if (shaderType == SHADER_POSTPROCESSING)
 			{

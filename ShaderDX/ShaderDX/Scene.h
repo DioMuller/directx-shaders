@@ -24,6 +24,7 @@ namespace dx9lib
 			std::vector<std::shared_ptr<Object>> objects;
 			std::shared_ptr<Camera> camera;
 			std::shared_ptr<Light> light;
+			bool initialized;
 
 		//////////////////////////////////////////
 		// Constructor

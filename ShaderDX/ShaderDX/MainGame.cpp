@@ -7,15 +7,16 @@ using namespace dx9lib;
 void MainGame::setup(IDirect3DDevice9* device)
 {
 	running = true;
-
-	scene.loadFromFile(Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Default.xml")));
-	scene.initialize(device);
+	scene = new Scene();
+	scene->loadFromFile(Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Default.xml")));
+	scene->initialize(device);
 }
 
 // Process whatever should be executed every turn.
 bool MainGame::process(float time)
 {
-	scene.process(time);
+	if (dialogOpen) return true;
+	scene->process(time);
 
 	return AbstractGameLoop::process(time);
 }
@@ -23,13 +24,14 @@ bool MainGame::process(float time)
 // Paints the scene on each loop.
 void MainGame::paint(IDirect3DDevice9* device)
 {
-	scene.paint(device);
+	if (dialogOpen) return;
+	scene->paint(device);
 }
 
 // Executed on shutdown.
 void MainGame::shutDown(IDirect3DDevice9* device)
 {
-	scene.finish(device);
+	scene->finish(device);
 	KeyboardInput::finalize();
 	device->Release();
 }
@@ -41,12 +43,56 @@ void MainGame::processEvent(const mage::WindowsEvent& evt)
 	if (evt.type == WM_KEYDOWN)
 	{
 		KeyboardInput::update(evt.wParam, true);
-
-		if (KeyboardInput::isPressed(VK_ESCAPE) )
-			running = false;
 	}
 	else if (evt.type == WM_KEYUP)
 	{
 		KeyboardInput::update(evt.wParam, false);
+	}
+
+	if (KeyboardInput::isPressed(VK_ESCAPE))
+		running = false;
+
+	if (KeyboardInput::isPressed(F2))
+	{
+		loadSceneDialog();
+	}
+}
+
+void MainGame::loadSceneDialog()
+{
+	if ( dialogOpen ) return;
+
+	dialogOpen = true; 
+
+	OPENFILENAME ofn;       // common dialog box structure
+	wchar_t szFile[260];       // buffer for file name
+	HWND hwnd = GetActiveWindow(); // owner window
+	HANDLE hf;              // file handle
+	std::wstring path = Content::GetContentItemPath(Content::SCENES, "");
+
+	// Initialize OPENFILENAME
+	ZeroMemory(&ofn, sizeof(ofn));
+	ofn.lStructSize = sizeof(ofn);
+	ofn.hwndOwner = hwnd;
+	ofn.lpstrFile = szFile;
+	// Set lpstrFile[0] to '\0' so that GetOpenFileName does not 
+	// use the contents of szFile to initialize itself.
+	ofn.lpstrFile[0] = '\0';
+	ofn.nMaxFile = sizeof(szFile);
+	ofn.lpstrFilter = L"All\0*.*\0Text\0*.XML\0";
+	ofn.nFilterIndex = 1;
+	ofn.lpstrFileTitle = NULL;
+	ofn.nMaxFileTitle = 0;
+	ofn.lpstrInitialDir = path.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+	// Display the Open dialog box. 
+
+	if (GetOpenFileName(&ofn) == TRUE)
+	{
+		if(scene) delete scene;
+		scene = new Scene();
+		scene->loadFromFile(Text::FromWString(std::wstring(ofn.lpstrFile)));	
+		dialogOpen = false;
 	}
 }
