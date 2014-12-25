@@ -366,9 +366,9 @@ void Scene::loadFromFile(std::string path)
 			}
 		}
 	}
-	//else
-	//{
+	else
+	{
 		auto errormsg = "File not found or Invalid XML.\n" + path + "\nError Number: " + std::to_string(ret);
 		MessageBoxA(0, errormsg.c_str(), 0, 0);
-	//}
+	}
 }

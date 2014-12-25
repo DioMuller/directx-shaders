@@ -10,12 +10,15 @@ const std::wstring Content::TEXTURES = L"Textures";
 std::wstring Content::GetApplicationPath()
 {
 	wchar_t path[PATH_MAX_LENGHT];
-	if (!GetCurrentDirectory(_countof(path), path))
+
+	if (!GetModuleFileName(NULL, path, PATH_MAX_LENGHT))
 	{
 		return L"";
 	}
 
-	return std::wstring(path);
+	auto strpath = std::wstring(path);
+	auto pos = strpath.find_last_of(L"\\/");
+	return strpath.substr(0, pos);
 
 }
 

@@ -69,8 +69,9 @@ void MainGame::processEvent(const mage::WindowsEvent& evt)
 	if (KeyboardInput::isPressed(VK_ESCAPE))
 		running = false;
 
-	if (KeyboardInput::isPressed(F2))
+	if (KeyboardInput::isPressed(Keys::F2))
 	{
+		KeyboardInput::update(Keys::F2, false);
 		openDialog = true;
 	}
 }
