@@ -3,12 +3,22 @@
 
 using namespace dx9lib;
 
+MainGame::MainGame()
+{
+	this->sceneFile = Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Default.xml"));
+}
+
+MainGame::MainGame(std::string sceneFile)
+{
+	this->sceneFile = sceneFile;
+}
+
 // Setups the scene.
 void MainGame::setup(IDirect3DDevice9* device)
 {
 	running = true;
 	scene = new Scene();
-	scene->loadFromFile(Text::FromWString(Content::GetContentItemPath(Content::SCENES, "Default.xml")));
+	scene->loadFromFile(this->sceneFile);
 	scene->initialize(device);
 }
 
@@ -25,6 +35,13 @@ bool MainGame::process(float time)
 void MainGame::paint(IDirect3DDevice9* device)
 {
 	if (dialogOpen) return;
+
+	if (openDialog)
+	{
+		loadSceneDialog(device);
+		return;
+	}
+
 	scene->paint(device);
 }
 
@@ -54,14 +71,14 @@ void MainGame::processEvent(const mage::WindowsEvent& evt)
 
 	if (KeyboardInput::isPressed(F2))
 	{
-		loadSceneDialog();
+		openDialog = true;
 	}
 }
 
-void MainGame::loadSceneDialog()
+void MainGame::loadSceneDialog(IDirect3DDevice9* device)
 {
+	openDialog = false;
 	if ( dialogOpen ) return;
-
 	dialogOpen = true; 
 
 	OPENFILENAME ofn;       // common dialog box structure
@@ -92,7 +109,9 @@ void MainGame::loadSceneDialog()
 	{
 		if(scene) delete scene;
 		scene = new Scene();
-		scene->loadFromFile(Text::FromWString(std::wstring(ofn.lpstrFile)));	
+		scene->loadFromFile(Text::FromWString(std::wstring(ofn.lpstrFile)));
+		scene->initialize(device);
+		openDialog = false;
 		dialogOpen = false;
 	}
 }

@@ -75,11 +75,6 @@ bool Scene::process(float time)
 // Paints the scene on each loop.
 void Scene::paint(IDirect3DDevice9* device)
 {
-	if (!initialized)
-	{
-		initialize(device);
-	}
-
 	if (postProcessing)
 	{
 		postProcessing->begin(device);
@@ -142,7 +137,7 @@ void Scene::finish(IDirect3DDevice9* device)
 void Scene::loadFromFile(std::string path)
 {
 	tinyxml2::XMLDocument doc;
-	doc.LoadFile(path.c_str());
+	auto ret = doc.LoadFile(path.c_str());
 
 	/////////////////////
 	// Get Root Element
@@ -371,8 +366,9 @@ void Scene::loadFromFile(std::string path)
 			}
 		}
 	}
-	else
-	{
-		// TODO: Log "No Root tag "Scene" found.
-	}
+	//else
+	//{
+		auto errormsg = "File not found or Invalid XML.\n" + path + "\nError Number: " + std::to_string(ret);
+		MessageBoxA(0, errormsg.c_str(), 0, 0);
+	//}
 }
