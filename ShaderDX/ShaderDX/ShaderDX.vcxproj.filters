@@ -494,5 +494,8 @@
     <FxCompile Include="Content\Shaders\PostProcessing\Pixelated.fx">
       <Filter>Content\Shaders\PostProcessing</Filter>
     </FxCompile>
+    <FxCompile Include="Content\Shaders\PostProcessing\SimpleEffects.fx">
+      <Filter>Content\Shaders\PostProcessing</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

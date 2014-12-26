@@ -75,11 +75,6 @@ float2 GetPixelSize(float2 imageSize)
 	return float2(1.0 / imageSize.x, 1.0 / imageSize.y);
 }
 
-float ToGrayscale(float3 color)
-{
-	return (0.299 * color.r) + (0.587 * color.g) + (0.114 * color.b);
-}
-
 float4 ApplyMask(sampler2D tex, float2 imageSize, float2 position, float3x3 mask)
 {
 	//Do not process borders.
@@ -126,14 +121,6 @@ OutputVS TransformVS(float3 posL : POSITION0, float3 normal : NORMAL0, float2 te
 /////////////////////////////////////
 // Pixel Shaders
 /////////////////////////////////////
-float4 GrayscalePS(float2 tex0 : TEXCOORD0) : COLOR
-{
-	float4 color = tex2D(gTextureSampler, tex0);
-	float gray = ToGrayscale(color.rgb);
-
-	return float4(gray, gray, gray, color.a);
-}
-
 float4 SobelPS(float2 tex0 : TEXCOORD0) : COLOR
 {
 	float4 gx = ApplyMask(gTextureSampler, gScreenSize, tex0, cSobelMaskGx);
@@ -170,16 +157,6 @@ float4 MeanPS(float2 tex0 : TEXCOORD0) : COLOR
 /////////////////////////////////////
 // Techniques
 /////////////////////////////////////
-technique GrayscaleTech
-{
-	pass P0
-	{
-		vertexShader = compile vs_2_0 TransformVS();
-		pixelShader = compile ps_2_0 GrayscalePS();
-		FillMode = Solid;
-	}
-};
-
 technique SobelTech
 {
 	pass P0

@@ -29,7 +29,7 @@ void PostEffect::initialize(IDirect3DDevice9* device)
 		}
 	}
 
-	shader->setVector("gScreenSize", D3DXVECTOR2(viewport.Width, viewport.Height));
+	shader->setVector("gScreenSize", D3DXVECTOR2((float) viewport.Width, (float) viewport.Height));
 
 	// Create Vertex buffer if it doesn't exist.
 	if (!vertexBuffer)
