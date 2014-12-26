@@ -13,10 +13,11 @@ uniform extern float2 gScreenSize;
 /////////////////////////////////////
 // Constants
 /////////////////////////////////////
-static const float cMul1 = 0.51;
-static const float cMul2 = 0.255;
+static const float cMul1 = 0.71;
+static const float cMul2 = 0.555;
 static const float cContrast = 2.1;
-static const float cBrightness = 40.0;
+static const float cBrightness = 60.0;
+static const float cScanlineMul = 0.8;
 
 /////////////////////////////////////
 // Vertex Shader Output Struct
@@ -88,7 +89,7 @@ float4 CRTPS(float2 tex0 : TEXCOORD0) : COLOR
 
 	if (round(screenPosition.y) % 2 == 0)
 	{
-		mask *= 0.5;
+		mask *= cScanlineMul;
 	}
 
 	color = color * mask;
