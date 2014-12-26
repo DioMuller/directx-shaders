@@ -221,19 +221,7 @@
     <Image Include="Content\Textures\grass.png">
       <Filter>Content\Textures</Filter>
     </Image>
-    <Image Include="Content\Textures\rock.png">
-      <Filter>Content\Textures</Filter>
-    </Image>
-    <Image Include="Content\Textures\sand.png">
-      <Filter>Content\Textures</Filter>
-    </Image>
     <Image Include="Content\Textures\sky.png">
-      <Filter>Content\Textures</Filter>
-    </Image>
-    <Image Include="Content\Textures\snow.png">
-      <Filter>Content\Textures</Filter>
-    </Image>
-    <Image Include="Content\Textures\water.png">
       <Filter>Content\Textures</Filter>
     </Image>
     <Image Include="Content\Textures\1BC4DCE4_a.bmp">
@@ -443,6 +431,81 @@
     <Image Include="Content\Textures\F09CE01_c.bmp">
       <Filter>Content\Textures</Filter>
     </Image>
+    <Image Include="Content\Textures\6DB1CD9A_c.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\54CAEA1F_c.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\57CB0439_c.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\22020D_c.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\adeleine.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\dd489eac.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\kingdedede.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\rock.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\s2-1_024-n.T.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\sand.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\snow.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\water.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\Wizpig_grp.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_nm01_Cannon_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_nm01_Dokan_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_nm01_DotNoise_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_nm01_FireBlue_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_nm01_FlagAlpha001_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_nm01_MetalDark_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_nm01_WoodRed_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_nm01_WoodYellow_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\worldmap_xx01_KoopaFase_dif.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\YoungLink_grp.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\StarrySky1.jpg">
+      <Filter>Content\Textures</Filter>
+    </Image>
+    <Image Include="Content\Textures\sky2.png">
+      <Filter>Content\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Models\Dwarf.x">
@@ -463,6 +526,30 @@
     <None Include="Content\Models\hyrulefeild.x">
       <Filter>Content\Models</Filter>
     </None>
+    <None Include="Content\Models\adalene.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\airship.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\Beehive.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\Hurricos.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\kingdedede.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\kirby.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\Wizpig.x">
+      <Filter>Content\Models</Filter>
+    </None>
+    <None Include="Content\Models\YoungLinkEquipped.x">
+      <Filter>Content\Models</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Content\Scenes\HyruleField - Laplace.xml">
@@ -478,6 +565,30 @@
       <Filter>Content\Scenes</Filter>
     </Xml>
     <Xml Include="Content\Scenes\HyruleField - Pixelated.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\HyruleField - Grayscale.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\HyruleField - Thresholding.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\AttackOnTitan - CRT.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\AttackOnTitan - Grayscale.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\AttackOnTitan - Mean.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\AttackOnTitan - No Post Processing.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\AttackOnTitan - Pixelated.xml">
+      <Filter>Content\Scenes</Filter>
+    </Xml>
+    <Xml Include="Content\Scenes\AttackOnTitan - Prewitt.xml">
       <Filter>Content\Scenes</Filter>
     </Xml>
   </ItemGroup>

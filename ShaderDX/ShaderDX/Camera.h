@@ -47,6 +47,8 @@ namespace dx9lib
 			// Sets Camera Projection Matrix
 			void setProjection(float fov, float near_distance, float far_distance);
 
+			std::string getPositionString();
+
 			void move(float x, float y, float z);
 			void reset();
 	};

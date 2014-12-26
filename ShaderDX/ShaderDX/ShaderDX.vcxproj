@@ -136,18 +136,23 @@
   <ItemGroup>
     <FxCompile Include="Content\Shaders\PostProcessing\CRT.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Content\Shaders\PostProcessing\Masks.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Content\Shaders\Object\PhongShader.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Content\Shaders\PostProcessing\Pixelated.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Content\Shaders\PostProcessing\SimpleEffects.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +166,7 @@
     <Image Include="Content\Textures\1EEE750F_c.bmp" />
     <Image Include="Content\Textures\213F78BF_a.bmp" />
     <Image Include="Content\Textures\213F78BF_c.bmp" />
+    <Image Include="Content\Textures\22020D_c.png" />
     <Image Include="Content\Textures\22A2163B_a.bmp" />
     <Image Include="Content\Textures\22A2163B_c.bmp" />
     <Image Include="Content\Textures\245C40BD_c.bmp" />
@@ -192,6 +198,8 @@
     <Image Include="Content\Textures\53350B80_c.bmp" />
     <Image Include="Content\Textures\54A04A95_a.bmp" />
     <Image Include="Content\Textures\54A04A95_c.bmp" />
+    <Image Include="Content\Textures\54CAEA1F_c.png" />
+    <Image Include="Content\Textures\57CB0439_c.png" />
     <Image Include="Content\Textures\5A4D99BD_c.bmp" />
     <Image Include="Content\Textures\5D246C08_a.bmp" />
     <Image Include="Content\Textures\5D246C08_c.bmp" />
@@ -201,6 +209,7 @@
     <Image Include="Content\Textures\65BD1672_c.bmp" />
     <Image Include="Content\Textures\6D92D9A3_a.bmp" />
     <Image Include="Content\Textures\6D92D9A3_c.bmp" />
+    <Image Include="Content\Textures\6DB1CD9A_c.png" />
     <Image Include="Content\Textures\6E951A98_a.bmp" />
     <Image Include="Content\Textures\6E951A98_c.bmp" />
     <Image Include="Content\Textures\6EC1628E_a.bmp" />
@@ -213,6 +222,7 @@
     <Image Include="Content\Textures\7CE8BE8_c.bmp" />
     <Image Include="Content\Textures\7F746AD1_a.bmp" />
     <Image Include="Content\Textures\7F746AD1_c.bmp" />
+    <Image Include="Content\Textures\adeleine.png" />
     <Image Include="Content\Textures\AF79BFC_c.bmp" />
     <Image Include="Content\Textures\Armor.dds" />
     <Image Include="Content\Textures\BC144FF_c.bmp" />
@@ -224,37 +234,69 @@
     <Image Include="Content\Textures\dbody.tga" />
     <Image Include="Content\Textures\dbodybump.tga" />
     <Image Include="Content\Textures\dbodytt.tga" />
+    <Image Include="Content\Textures\dd489eac.png" />
     <Image Include="Content\Textures\DwarfHead.dds" />
     <Image Include="Content\Textures\F09CE01_c.bmp" />
     <Image Include="Content\Textures\grass.png" />
     <Image Include="Content\Textures\Headgear.dds" />
     <Image Include="Content\Textures\Helmet.dds" />
+    <Image Include="Content\Textures\kingdedede.png" />
     <Image Include="Content\Textures\Pack.dds" />
     <Image Include="Content\Textures\rock.png" />
+    <Image Include="Content\Textures\s2-1_024-n.T.png" />
     <Image Include="Content\Textures\sand.png" />
     <Image Include="Content\Textures\ship1UV.bmp" />
     <Image Include="Content\Textures\sky.png" />
+    <Image Include="Content\Textures\sky2.png" />
     <Image Include="Content\Textures\snow.png" />
+    <Image Include="Content\Textures\StarrySky1.jpg" />
     <Image Include="Content\Textures\water.png" />
     <Image Include="Content\Textures\Weapons.dds" />
     <Image Include="Content\Textures\whitetex.dds" />
+    <Image Include="Content\Textures\Wizpig_grp.png" />
+    <Image Include="Content\Textures\worldmap_nm01_Cannon_dif.png" />
+    <Image Include="Content\Textures\worldmap_nm01_Dokan_dif.png" />
+    <Image Include="Content\Textures\worldmap_nm01_DotNoise_dif.png" />
+    <Image Include="Content\Textures\worldmap_nm01_FireBlue_dif.png" />
+    <Image Include="Content\Textures\worldmap_nm01_FlagAlpha001_dif.png" />
+    <Image Include="Content\Textures\worldmap_nm01_MetalDark_dif.png" />
+    <Image Include="Content\Textures\worldmap_nm01_WoodRed_dif.png" />
+    <Image Include="Content\Textures\worldmap_nm01_WoodYellow_dif.png" />
+    <Image Include="Content\Textures\worldmap_xx01_KoopaFase_dif.png" />
+    <Image Include="Content\Textures\YoungLink_grp.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Models\adalene.x" />
+    <None Include="Content\Models\airship.x" />
+    <None Include="Content\Models\Beehive.x" />
     <None Include="Content\Models\dino videogame.x" />
     <None Include="Content\Models\Dwarf.x" />
+    <None Include="Content\Models\Hurricos.x" />
     <None Include="Content\Models\hyrulefeild.x" />
+    <None Include="Content\Models\kingdedede.x" />
+    <None Include="Content\Models\kirby.x" />
     <None Include="Content\Models\ship1.x" />
     <None Include="Content\Models\skullocc.x" />
     <None Include="Content\Models\vic viper.x" />
+    <None Include="Content\Models\Wizpig.x" />
+    <None Include="Content\Models\YoungLinkEquipped.x" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Content\Scenes\AttackOnTitan - CRT.xml" />
+    <Xml Include="Content\Scenes\AttackOnTitan - Grayscale.xml" />
+    <Xml Include="Content\Scenes\AttackOnTitan - Mean.xml" />
+    <Xml Include="Content\Scenes\AttackOnTitan - No Post Processing.xml" />
+    <Xml Include="Content\Scenes\AttackOnTitan - Pixelated.xml" />
+    <Xml Include="Content\Scenes\AttackOnTitan - Prewitt.xml" />
     <Xml Include="Content\Scenes\HyruleField - CRT.xml" />
+    <Xml Include="Content\Scenes\HyruleField - Grayscale.xml" />
     <Xml Include="Content\Scenes\HyruleField - Laplace.xml" />
     <Xml Include="Content\Scenes\HyruleField - No Post Processing.xml" />
     <Xml Include="Content\Scenes\Default.xml">
       <DeploymentContent>false</DeploymentContent>
     </Xml>
     <Xml Include="Content\Scenes\HyruleField - Pixelated.xml" />
+    <Xml Include="Content\Scenes\HyruleField - Thresholding.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

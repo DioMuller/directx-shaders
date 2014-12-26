@@ -75,7 +75,7 @@ void MainGame::loadSceneDialog(IDirect3DDevice9* device)
 	OPENFILENAME ofn;       // common dialog box structure
 	wchar_t szFile[260];       // buffer for file name
 	HWND hwnd = GetActiveWindow(); // owner window
-	HANDLE hf;              // file handle
+	//HANDLE hf;              // file handle
 	std::wstring path = Content::GetContentItemPath(Content::SCENES, "");
 
 	// Initialize OPENFILENAME

@@ -7,7 +7,7 @@ PostEffect::PostEffect(std::wstring effectFile, std::string tech, D3DXVECTOR4 di
 {
 	this->shader = new mage::Effect(effectFile);
 	this->tech = tech;
-	this->viewport = { dimensions[0], dimensions[1], dimensions[2], dimensions[3], 0.0f, 1.0f };
+	this->viewport = { (DWORD)dimensions[0], (DWORD)dimensions[1], (DWORD)dimensions[2], (DWORD) dimensions[3], 0.0f, 1.0f };
 
 	this->vertexBuffer = nullptr;
 }

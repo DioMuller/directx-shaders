@@ -2,7 +2,7 @@
 <Scene>
 	<!-- Shader Files -->
 	<Shader Id="Phong" Type="Object" File="PhongShader.fx"/>  
-	<Shader Id="PostProcessing" Type="PostProcessing" Tech="PixelatedTech" File="Pixelated.fx"/>
+	<!--<Shader Id="PostProcessing" Type="PostProcessing" Tech="GrayscaleTech" File="SimpleEffects.fx"/>-->
 
 	<!-- Scene Camera -->
 	<Camera Fov="70.0" Near="1.0" Far="5000.0">

@@ -150,3 +150,10 @@ void Camera::setProjection(float fov, float near_distance, float far_distance)
 	this->far_distance = far_distance;
 	changed = true;
 }
+
+std::string Camera::getPositionString()
+{
+	return "[ X = " + std::to_string(position.x) + 
+		    " Y = " + std::to_string(position.y) +
+			" Z = " + std::to_string(position.z) + " ]";
+}
